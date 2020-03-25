@@ -6,15 +6,21 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     <div class="footer-menu">
         <div class="container">
             <nav>
-                <ul>
-                    <li><a href="#">Каталог</a></li>
-                    <li><a href="#">Доставка и оплата</a></li>
-                    <li><a href="#">Гарантия</a></li>
-                    <li><a href="#">О компании</a></li>
-                    <li><a href="#">Новости</a></li>
-                    <li><a href="#">Акции</a></li>
-                    <li><a href="#">Статьи</a></li>
-                </ul>
+                <?$APPLICATION->IncludeComponent("bitrix:menu",
+                    "main",
+                    Array(
+                        "ROOT_MENU_TYPE" => "bottom",
+                        "MAX_LEVEL" => "1",
+                        "CHILD_MENU_TYPE" => "bottom",
+                        "USE_EXT" => "Y",
+                        "DELAY" => "N",
+                        "ALLOW_MULTI_SELECT" => "Y",
+                        "MENU_CACHE_TYPE" => "N",
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_USE_GROUPS" => "Y",
+                        "MENU_CACHE_GET_VARS" => ""
+                    )
+                );?>
             </nav>
         </div>
     </div>
