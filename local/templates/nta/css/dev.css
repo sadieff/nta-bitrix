@@ -1,0 +1,8 @@
+#bx-panel {
+    position: fixed !important;
+    bottom: 0;
+    width: 100% !important;
+}
+.input-checkbox input[disabled] ~ span {
+    opacity: .5;
+}
