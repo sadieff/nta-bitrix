@@ -247,7 +247,7 @@ if ($useBrands || $useVoteRating)
 	}
 	if ($useBrands)
 	{
-		?><?$APPLICATION->IncludeComponent("bitrix:catalog.brandblock", ".default", array(
+		?><?$APPLICATION->IncludeComponent("bitrix:catalog.brandblock", "module.listing", array(
 			"IBLOCK_TYPE" => $arParams['IBLOCK_TYPE'],
 			"IBLOCK_ID" => $arParams['IBLOCK_ID'],
 			"ELEMENT_ID" => $arResult['ID'],
@@ -597,7 +597,7 @@ if (isset($arResult['OFFERS']) && !empty($arResult['OFFERS']))
 ?>
 	<span id="<? echo $arItemIDs['OFFER_GROUP'].$offerID; ?>" style="display: none;">
 <?$APPLICATION->IncludeComponent("bitrix:catalog.set.constructor",
-	".default",
+	"module.listing",
 	array(
 		"IBLOCK_ID" => $arResult["OFFERS_IBLOCK"],
 		"ELEMENT_ID" => $offerID,
@@ -625,7 +625,7 @@ else
 	if ($arResult['MODULES']['catalog'] && $arResult['OFFER_GROUP'])
 	{
 ?><?$APPLICATION->IncludeComponent("bitrix:catalog.set.constructor",
-	".default",
+	"module.listing",
 	array(
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"ELEMENT_ID" => $arResult["ID"],

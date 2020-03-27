@@ -15,7 +15,7 @@ $this->setFrameMode(true);
 <?
 $arElements = $APPLICATION->IncludeComponent(
 	"bitrix:search.page",
-	".default",
+	"module.listing",
 	Array(
 		"RESTART" => $arParams["RESTART"],
 		"NO_WORD_LOGIC" => $arParams["NO_WORD_LOGIC"],
@@ -47,7 +47,7 @@ if (!empty($arElements) && is_array($arElements))
 		);
 		$APPLICATION->IncludeComponent(
 		"bitrix:catalog.section",
-		".default",
+		"module.listing",
 		array(
 			"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],

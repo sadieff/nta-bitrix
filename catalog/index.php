@@ -8,7 +8,7 @@ $APPLICATION->SetTitle("Главная");
 	    "FILTER_SECTION_IBLOCK_ID" => "6", // Инфоблок-фильтр "Разделы"
 	    "FILTER_PARAMS_IBLOCK_ID" => "7", // Инфоблок-фильтр "По параметрам"
 		"ACTION_VARIABLE" => "action",
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -114,7 +114,7 @@ $APPLICATION->SetTitle("Главная");
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TEMPLATE" => "module.listing",
         "PAGER_TITLE" => "Товары",
         "PAGE_ELEMENT_COUNT" => "30",
         "PARTIAL_PRODUCT_PROPERTIES" => "N",

@@ -6,3 +6,23 @@
 .input-checkbox input[disabled] ~ span {
     opacity: .5;
 }
+.catalog-new_image {
+    padding-top: 12px;
+}
+.header-bascket span,
+.header-top_cart span{
+    display: none;
+}
+.add-bascket_js.active {
+    color: transparent;
+    position: relative;
+}
+.add-bascket_js.active:before {
+    font-size: 0.9em;
+    content: 'В корзине';
+    color: #fff;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}

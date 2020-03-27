@@ -13,71 +13,29 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
-$this->setFrameMode(true);
+CModule::IncludeModule("iblock");
 
-p($templateFile);
-
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
-
-if (!isset($arParams['FILTER_VIEW_MODE']) || (string)$arParams['FILTER_VIEW_MODE'] == '')
-	$arParams['FILTER_VIEW_MODE'] = 'VERTICAL';
-$arParams['USE_FILTER'] = (isset($arParams['USE_FILTER']) && $arParams['USE_FILTER'] == 'Y' ? 'Y' : 'N');
-
-$isVerticalFilter = ('Y' == $arParams['USE_FILTER'] && $arParams["FILTER_VIEW_MODE"] == "VERTICAL");
-$isSidebar = ($arParams["SIDEBAR_SECTION_SHOW"] == "Y" && isset($arParams["SIDEBAR_PATH"]) && !empty($arParams["SIDEBAR_PATH"]));
-$isFilter = ($arParams['USE_FILTER'] == 'Y');
-
-if ($isFilter)
+$cache = Bitrix\Main\Data\Cache::createInstance();
+if ($cache->initCache($cacheTime, $cacheId, $cacheDir))
 {
-	$arFilter = array(
-		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-		"ACTIVE" => "Y",
-		"GLOBAL_ACTIVE" => "Y",
-	);
-	if (0 < intval($arResult["VARIABLES"]["SECTION_ID"]))
-		$arFilter["ID"] = $arResult["VARIABLES"]["SECTION_ID"];
-	elseif ('' != $arResult["VARIABLES"]["SECTION_CODE"])
-		$arFilter["=CODE"] = $arResult["VARIABLES"]["SECTION_CODE"];
-
-	$obCache = new CPHPCache();
-	if ($obCache->InitCache(36000, serialize($arFilter), "/iblock/catalog"))
-	{
-		$arCurSection = $obCache->GetVars();
-	}
-	elseif ($obCache->StartDataCache())
-	{
-		$arCurSection = array();
-		if (Loader::includeModule("iblock"))
-		{
-			$dbRes = CIBlockSection::GetList(array(), $arFilter, false, array("ID"));
-
-			if(defined("BX_COMP_MANAGED_CACHE"))
-			{
-				global $CACHE_MANAGER;
-				$CACHE_MANAGER->StartTagCache("/iblock/catalog");
-
-				if ($arCurSection = $dbRes->Fetch())
-					$CACHE_MANAGER->RegisterTag("iblock_id_".$arParams["IBLOCK_ID"]);
-
-				$CACHE_MANAGER->EndTagCache();
-			}
-			else
-			{
-				if(!$arCurSection = $dbRes->Fetch())
-					$arCurSection = array();
-			}
-		}
-		$obCache->EndDataCache($arCurSection);
-	}
-	if (!isset($arCurSection))
-		$arCurSection = array();
+    $arSection = $cache->getVars();
 }
-?>
-<div class="row">
-<?
-if ($isVerticalFilter)
-	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_vertical.php");
-else
-	include($_SERVER["DOCUMENT_ROOT"]."/".$this->GetFolder()."/section_horizontal.php");
-?>
-</div>
+elseif ($cache->startDataCache())
+{
+    $arSection = [];
+
+    $result = CIBlockSection::GetList(
+        array(),
+        array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "CODE" => $arResult["VARIABLES"]["SECTION_CODE"]),
+        false,
+        array('UF_*')
+    );
+    while ($data = $result -> GetNext()){
+        $arSection = $data;
+    }
+
+    $cache->endDataCache($arSection);
+}
+
+if($arSection["DEPTH_LEVEL"] == 1) include 'section-brand.php';
+else include 'section-model.php';

@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("Главная");
 	"bitrix:catalog.smart.filter",
 	"main",
 	array(
-		"COMPONENT_TEMPLATE" => ".default",
+		"COMPONENT_TEMPLATE" => "module.listing",
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "1",
 		"SECTION_ID" => "",
@@ -154,7 +154,7 @@ $APPLICATION->SetTitle("Главная");
         "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
         "PAGER_SHOW_ALL" => "N",
         "PAGER_SHOW_ALWAYS" => "N",
-        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TEMPLATE" => "module.listing",
         "PAGER_TITLE" => "Товары",
         "PAGE_ELEMENT_COUNT" => "30",
         "PARTIAL_PRODUCT_PROPERTIES" => "N",

@@ -118,7 +118,7 @@ if ($isFilter || $isSidebar): ?>
 						CBitrixComponent::includeComponentClass('bitrix:sale.products.gift.section');
 						$APPLICATION->IncludeComponent(
 							'bitrix:sale.products.gift.section',
-							'.default',
+							'module.listing',
 							array(
 								'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
 								'IBLOCK_ID' => $arParams['IBLOCK_ID'],

@@ -130,7 +130,7 @@ if ($ElementID > 0)
 {
 	if($arParams["USE_STORE"] == "Y" && ModuleManager::isModuleInstalled("catalog"))
 	{
-		?><?$APPLICATION->IncludeComponent("bitrix:catalog.store.amount", ".default", array(
+		?><?$APPLICATION->IncludeComponent("bitrix:catalog.store.amount", "module.listing", array(
 			"ELEMENT_ID" => $ElementID,
 			"STORE_PATH" => $arParams['STORE_PATH'],
 			"CACHE_TYPE" => "A",
@@ -325,7 +325,7 @@ if ($ElementID > 0)
 
 	if($arParams["USE_ALSO_BUY"] == "Y" && ModuleManager::isModuleInstalled("sale") && !empty($arRecomData))
 	{
-		?><?$APPLICATION->IncludeComponent("bitrix:sale.recommended.products", ".default", array(
+		?><?$APPLICATION->IncludeComponent("bitrix:sale.recommended.products", "module.listing", array(
 			"ID" => $ElementID,
 			"TEMPLATE_THEME" => (isset($arParams['TEMPLATE_THEME']) ? $arParams['TEMPLATE_THEME'] : ''),
 			"MIN_BUYES" => $arParams["ALSO_BUY_MIN_BUYES"],

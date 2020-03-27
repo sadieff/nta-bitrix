@@ -16,7 +16,6 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
     <link rel="shortcut icon" href="<?=SITE_TEMPLATE_PATH;?>/favicon.png" type="image/png">
 
-    <script data-skip-moving="true" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=8d69c24a-14dd-41e7-91ff-60bee477e82c"></script>
     <?
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/js/carousel/assets/owl.carousel.min.css');
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/js/fb/jquery.fancybox.min.css');
@@ -29,7 +28,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/scroll/jquery.mousewheel.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/fb/jquery.fancybox.min.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/main.js');
-    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
+    //$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/dev.js');
     ?>
 
@@ -68,7 +67,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                 Сравнить
                                 <span>2</span>
                             </a>
-                            <a href="#" class="header-top_cart">
+                            <a href="/basket/" class="header-top_cart">
                                 Корзина
                                 <span>3</span>
                             </a>
@@ -119,9 +118,9 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             </div>
                         </div>
                         <div class="header-shop">
-                            <div class="header-bascket">
+                            <a href="/basket/" class="header-bascket">
                                 Корзина <span>3</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -185,7 +184,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
     <? if(!CSite::InDir('/index.php')): ?>
 
-    <div class="breadcrumb <?=$APPLICATION->GetProperty("BREADCRUMB_CLASS"); ?>">
+    <div class="breadcrumb <?=$APPLICATION->ShowViewContent("BREADCRUMB_CLASS");?>">
         <div class="container">
             <?$APPLICATION->IncludeComponent("bitrix:breadcrumb",
                 "breadcrumb",

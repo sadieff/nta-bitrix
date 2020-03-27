@@ -234,7 +234,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 			{
 				$APPLICATION->IncludeComponent(
 					'bitrix:catalog.store.amount',
-					'.default',
+					'module.listing',
 					array(
 						'ELEMENT_ID' => $elementId,
 						'STORE_PATH' => $arParams['STORE_PATH'],

@@ -45,17 +45,17 @@ use Bitrix\Main\Loader,
 			if(name_link)
 			{
 				if(linked)
-					name_link.src='/bitrix/themes/.default/icons/iblock/link.gif';
+					name_link.src='/bitrix/themes/module.listing/icons/iblock/link.gif';
 				else
-					name_link.src='/bitrix/themes/.default/icons/iblock/unlink.gif';
+					name_link.src='/bitrix/themes/module.listing/icons/iblock/unlink.gif';
 			}
 			var code_link = document.getElementById('code_link');
 			if(code_link)
 			{
 				if(linked)
-					code_link.src='/bitrix/themes/.default/icons/iblock/link.gif';
+					code_link.src='/bitrix/themes/module.listing/icons/iblock/link.gif';
 				else
-					code_link.src='/bitrix/themes/.default/icons/iblock/unlink.gif';
+					code_link.src='/bitrix/themes/module.listing/icons/iblock/unlink.gif';
 			}
 			var linked_state = document.getElementById('linked_state');
 			if(linked_state)

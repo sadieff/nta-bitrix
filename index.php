@@ -1,7 +1,10 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 $APPLICATION->SetTitle('Главная');
+$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
 ?>
+    <script data-skip-moving="true" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=8d69c24a-14dd-41e7-91ff-60bee477e82c"></script>
+
     <div class="main-slider owl-carousel">
         <div class="main-sliders_item">
             <img src="/local/templates/nta/images/image-1.jpg" alt="">

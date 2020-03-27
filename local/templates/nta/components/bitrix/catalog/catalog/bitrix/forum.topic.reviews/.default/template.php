@@ -43,7 +43,7 @@ foreach ($arResult["MESSAGES"] as $res):
 				if(isset($res["AVATAR"]["HTML"]) > 0)
 					echo $res["AVATAR"]["HTML"];
 				else
-					echo '<img src="/bitrix/components/bitrix/forum.topic.reviews/templates/.default/images/noavatar.gif" border="0" />';
+					echo '<img src="/bitrix/components/bitrix/forum.topic.reviews/templates/module.listing/images/noavatar.gif" border="0" />';
 				?>
 			</div>
 		<? } ?>

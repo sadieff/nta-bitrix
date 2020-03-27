@@ -1,111 +1,59 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
-/** @var array $arParams */
-/** @var array $arResult */
-/** @global CMain $APPLICATION */
-/** @global CUser $USER */
-/** @global CDatabase $DB */
-/** @var CBitrixComponentTemplate $this */
-/** @var string $templateName */
-/** @var string $templateFile */
-/** @var string $templateFolder */
-/** @var string $componentPath */
-/** @var CBitrixComponent $component */
-
-$APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
-
+<?php
+//$APPLICATION->AddChainItem($arSection["UF_TITLE"]);
+if(!empty($arSection["DETAIL_PICTURE"])) $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
 $this->setFrameMode(true); ?>
 
-<div class="main-slider owl-carousel">
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-1.jpg" alt="">
+<? if(!empty($arSection["DETAIL_PICTURE"])): ?>
+    <div class="static-banner static-banner_brands">
+        <img src="<?=CFile::GetPath($arSection["DETAIL_PICTURE"]);?>" alt="" class="static-banner_image">
         <div class="container">
-            <div class="main-slider_title">
-                Эксклюзивный дилер Mitas в России
+            <div class="banner-title">
+                <?=$arSection["~UF_BANNER_TITLE"];?>
             </div>
-            <div class="main-slider_dsc">
-                Индустриальные, сельскохозяйственные, лесные, для погрузчиков, мотошины, велошины
+            <div class="banner-dsc">
+                <?=$arSection["~UF_BANNER_DSC"];?>
             </div>
-            <div class="main-slider_logo">
-                <img src="/local/templates/nta/images/image-14.jpg" alt="">
-                <img src="/local/templates/nta/images/image-15.jpg" alt="">
-            </div>
-            <a href="#" class="main-slider_button">Начать подбор</a>
-        </div>
-    </div>
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-2.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Официальный дилер мировых лидеров
-            </div>
-            <div class="main-slider_dsc">
-                По производству высококачественных индустриальных, сельскохозяйственных и OTR шин
-            </div>
-            <div class="main-slider_logo">
-                <img src="/local/templates/nta/images/image-14.jpg" alt="">
-                <img src="/local/templates/nta/images/image-15.jpg" alt="">
-            </div>
-            <a href="#" class="main-slider_button">Начать подбор</a>
-        </div>
-    </div>
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-1.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Официальный дилер мировых лидеров
-            </div>
-            <div class="main-slider_dsc">
-                По производству высококачественных индустриальных, сельскохозяйственных и OTR шин
+            <div class="static-banner_button">
+                <a href="#" class="static-banner_link">
+                    Модели и размеры
+                </a>
             </div>
         </div>
-    </div>
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-2.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Официальный дилер мировых лидеров
-            </div>
-            <div class="main-slider_dsc">
-                По производству высококачественных индустриальных, сельскохозяйственных и OTR шин
-            </div>
+        <div class="static-banner_brand">
+            <img src="<?=CFile::GetPath($arSection["PICTURE"]);?>" alt="">
         </div>
-    </div>
-</div> <!-- main-slider -->
+    </div> <!-- static-banner -->
+<?endif;?>
 
-<div class="category-list category-list_small">
+<div class="page-brand_info">
     <div class="container">
-        <div class="category-list_title">
-            Популярные размеры
-        </div>
-        <div class="category-list_enum">
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
+        <div class="row">
+            <div class="<?if(!empty($arSection["UF_SLIDER"])):?>col-lg-7<?else:?>col-lg-12<?endif;?>">
+                <div class="page-brand_title">
+                    <?=$arSection["UF_TITLE"];?>
+                </div>
+                <div class="page-brand_content content_">
+                    <?=$arSection["~DESCRIPTION"];?>
+                </div>
+            </div>
+            <?if(!empty($arSection["UF_SLIDER"])):?>
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="page-brand_carousel owl-carousel">
+                        <? foreach($arSection["UF_SLIDER"] as $arImage):
+                            $image = CFile::ResizeImageGet($arImage, array('width' => 372, 'height' => 323), BX_RESIZE_IMAGE_PROPORTIONAL, true); ?>
+                            <div class="page-brand_carousel-item">
+                                <img src="<?=$image["src"];?>" alt="">
+                            </div>
+                        <? endforeach; ?>
+                    </div>
+                </div>
+            <?endif;?>
         </div>
     </div>
-</div> <!-- category-list -->
+</div> <!-- page-brand_info -->
 
-<div class="filter-home">
+<div class="filter-home catalog-filter">
     <div class="container">
-        <div class="filter-home_title">
-            Быстрый поиск шин по параметрам
-        </div>
         <div class="filter-form">
             <div class="filter-item mm">
                 <div class="filter-item_title">
@@ -473,16 +421,21 @@ $this->setFrameMode(true); ?>
 
     </div>
 
-    <div class="brands-home">
+</div> <!-- filter-home -->
+
+<div class="category-section page-brand_section">
+    <div class="container">
         <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list",
-            "brands",
+            "brands.listing",
             Array(
+                "PARENT_IMAGE" => CFile::GetPath($arSection["PICTURE"]),
+                "PARENT_BRAND" => $arSection["NAME"],
                 "VIEW_MODE" => "TEXT",
                 "SHOW_PARENT_NAME" => "Y",
                 "IBLOCK_TYPE" => "",
                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                 "SECTION_USER_FIELDS" => array('UF_*'),
-                "SECTION_ID" => "",
+                "SECTION_ID" => $arSection["ID"],
                 "SECTION_CODE" => "",
                 "SECTION_URL" => "",
                 "COUNT_ELEMENTS" => "Y",
@@ -494,171 +447,30 @@ $this->setFrameMode(true); ?>
                 "CACHE_NOTES" => "",
                 "CACHE_GROUPS" => "N"
             )
-        );?>
-    </div>
-</div> <!-- filter-home -->
-
-<div class="catalog-home catalog-list">
-    <div class="container">
-        <? $APPLICATION->IncludeComponent(
-            "bitrix:news.list",
-            "catalog.uses",
-            array(
-                "IBLOCK_TYPE" => "catalog",
-                "IBLOCK_ID"   => "6",
-                "NEWS_COUNT"  => "10",
-                "SINGLE_IMAGE" => "Y",
-                "FIELD_CODE" => array("DETAIL_PICTURE"),
-                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                "ADD_SECTIONS_CHAIN" => "N",
-                "SET_TITLE" => "N",
-                "PROPERTY_CODE" => array(
-                    0 => "NAME",
-                ),
-            ),
-            false
         ); ?>
-    </div>
-</div> <!-- catalog-home -->
-
-<div class="category-list_type category-list_small">
-    <div class="container">
-        <div class="category-type_title">
-            Шины по типу техники
-        </div>
-        <div class="category-list_enum">
-            <a href="#" class="category-list_item active">Шины для трактора</a>
-            <a href="#" class="category-list_item">Шины для самосвала</a>
-            <a href="#" class="category-list_item">Шины для фронтальных погрузчиков</a>
-            <a href="#" class="category-list_item">Шины для JCB</a>
-            <a href="#" class="category-list_item">Шины для комбайна</a>
-            <a href="#" class="category-list_item">Шины для крана</a>
-            <a href="#" class="category-list_item">Шины для экскаваторов-погрузчиков</a>
-            <a href="#" class="category-list_item">Шины для катка</a>
-            <a href="#" class="category-list_item">Шины для грейдера</a>
-            <a href="#" class="category-list_item">Шины для мини погрузчиков</a>
-        </div>
-    </div>
-</div> <!-- category-list -->
-
-<div class="catalog-new">
-    <div class="container">
-        <div class="catalog-new_title">
-            Новые поступления
-        </div>
-
-        <div class="catalog-new_carousel catalog-new_js owl-carousel">
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-1">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-2">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-3">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-4">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-2">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-        </div>
 
         <div class="catalog-new_more-box">
             <a href="#" class="catalog-new_link">
                 Показать еще
             </a>
         </div>
-    </div>
-</div> <!-- catalog-new -->
 
-<div class="catalog-info">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="catalog-info_title">
-                    Короткий интересный подзаголовок о компании
-                </div>
-                <div class="catalog-info_dsc">
-                    Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём.
-                </div>
-            </div>
-            <div class="col-lg-5 offset-lg-1">
-                <div class="catalog-info_image">
-                    <img src="/local/templates/nta/images/image-21.jpg" alt="">
-                </div>
-            </div>
+        <!-- https://tuning-soft.ru/articles/bitrix/pagination-by-sections.html -->
+
+        <div class="catalog-navigation">
+            <a href="#" class="catalog-navigation_prev">
+                Предыдущая страница
+            </a>
+            <ul>
+                <li class="current"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+            </ul>
+            <a href="#" class="catalog-navigation_next">
+                Предыдущая страница
+            </a>
         </div>
     </div>
-</div> <!-- catalog-info -->
+</div> <!-- category-section -->

@@ -1,4 +1,5 @@
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
 $APPLICATION->SetTitle("Доставка и оплата"); ?>
 
     <div class="static-banner about-static_banner">

@@ -80,7 +80,7 @@ $this->setFrameMode(true);
 				</noindex>
 			<?elseif((count($arResult["PRICES"]) > 0) || is_array($arElement["PRICE_MATRIX"])):?>
 				<?=GetMessage("CATALOG_NOT_AVAILABLE")?>
-				<?$APPLICATION->IncludeComponent("bitrix:sale.notice.product", ".default", array(
+				<?$APPLICATION->IncludeComponent("bitrix:sale.notice.product", "module.listing", array(
 							"NOTIFY_ID" => $arElement['ID'],
 							"NOTIFY_URL" => htmlspecialcharsback($arElement["SUBSCRIBE_URL"]),
 							"NOTIFY_USE_CAPTHA" => "N"

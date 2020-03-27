@@ -33,3 +33,12 @@ function createCode($s) {
     $s = str_replace(" ", "-", $s);
     return $s;
 }
+
+/* сокращение текста */
+function reduce ($string, $lingth){
+    $string = strip_tags($string);
+    $string = substr($string, 0, $lingth);
+    $string = rtrim($string, "!,.-");
+    $string = substr($string, 0, strrpos($string, ' '));
+    return $string;
+}
