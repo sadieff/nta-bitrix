@@ -1,5 +1,51 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
+
+$cache = Bitrix\Main\Data\Cache::createInstance();
+if ($cache->initCache($cacheTime, $cacheId, $cacheDir) && 0)
+{
+    $mapSection = $cache->getVars();
+}
+elseif ($cache->startDataCache())
+{
+
+    /* Получаем значение, по которому фильтровать */
+    $request = CIBlockElement::GetList(
+        array("SORT" => "ASC"),
+        array("IBLOCK_ID" => $arParams["FILTER_SECTION_IBLOCK_ID"], "CODE" => $arResult["VARIABLES"]["SECTION_CODE"]),
+        false,
+        false,
+        array("PROPERTY_CUSTOM_FILTER", "NAME")
+    );
+    while ($section = $request -> GetNextElement()){
+        $item = $section->GetFields();
+        $find = json_decode($item["~PROPERTY_CUSTOM_FILTER_VALUE"]);
+        $find = $find->CHILDREN[0]->DATA->value;
+        $APPLICATION->AddChainItem($item["NAME"]);
+    }
+
+    /* получим список разделов, у которых есть элементы, попадающие под фильтр */
+    $mapSection = [];
+    $arSection = [];
+    $Result = CIBlockElement::GetList(
+        array("SORT" => "ASC"),
+        array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "PROPERTY_USE" => $find),
+        array("IBLOCK_SECTION_ID"),
+        //false,
+        false,
+        array("ID", "IBLOCK_SECTION_ID", "NAME")
+    );
+
+    while ($element = $Result -> GetNextElement()){
+        $item = $element->GetFields();
+        $prop["PROPERTY"] = $element->GetProperties();
+        $mapSection[$item["IBLOCK_SECTION_ID"]] = $item["IBLOCK_SECTION_ID"];
+
+    }
+
+    $cache->endDataCache($mapSection);
+
+}
 ?>
 
 <div class="catalog-main_slider no-counter owl-carousel">
@@ -443,8 +489,38 @@ $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
 
 <div class="category-section category-section_padding">
     <div class="container">
+            <?
+            if(!empty($mapSection)):
+                global $sectionFilter;
+                $sectionFilter = array('ID' => $mapSection, 'DEPTH_LEVEL' => 2);
+                $APPLICATION->IncludeComponent("bitrix:catalog.section.list",
+                    "brands.listing",
+                    Array(
+                        "FILTER_NAME" => "sectionFilter",
+                        "PARENT_IMAGE" => CFile::GetPath($arSection["PICTURE"]),
+                        "PARENT_BRAND" => $arSection["NAME"],
+                        "VIEW_MODE" => "TEXT",
+                        "SHOW_PARENT_NAME" => "Y",
+                        "IBLOCK_TYPE" => "",
+                        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                        "SECTION_USER_FIELDS" => array('UF_*'),
+                        "SECTION_ID" => $arSection["ID"],
+                        "SECTION_CODE" => "",
+                        "SECTION_URL" => "",
+                        "COUNT_ELEMENTS" => "Y",
+                        "TOP_DEPTH" => "2",
+                        "SECTION_FIELDS" => "",
+                        "ADD_SECTIONS_CHAIN" => "Y",
+                        "CACHE_TYPE" => "A",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_NOTES" => "",
+                        "CACHE_GROUPS" => "N"
+                    )
+                );
+            endif;?>
+
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-6">
+            <!--div class="col-xl-3 col-lg-4 col-6">
                 <div class="catalog-new_item">
                     <div class="catalog-new_brand">
                         <img src="/local/templates/nta/images/image-20.jpg" alt="">
@@ -672,7 +748,7 @@ $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
                     </a>
                 </div>
             </div>
-        </div>
+        </div-->
 
 
         <div class="catalog-new_more-box">

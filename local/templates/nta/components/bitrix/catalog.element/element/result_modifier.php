@@ -17,7 +17,7 @@ else $arResult['IMAGE'] = "/local/templates/nta/images/default.jpg";
 
 /* array map options for views on the page element */
 $arResult['ARR_MAP_OPTIONS'] = array(
-    "CML2_ARTICLE",
+    "ARTICLE",
     "BREND",
     "MODEL",
     "USE",
