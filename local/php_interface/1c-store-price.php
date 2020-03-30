@@ -40,14 +40,15 @@ $requestElements  = $blockElement::GetList(
     array("IBLOCK_ID" => CATALOG_IBLOCK_ID),
     false,
     false,
-    array("ID", "IBLOCK_ID", "CATALOG_GROUP_1", "PROPERTY_CML2_ARTICLE")
+    array("ID", "IBLOCK_ID", "CATALOG_GROUP_1", "PROPERTY_MATCHING", "PROPERTY_ARTICLE")
 );
 $products = [];
 while ($element = $requestElements -> GetNextElement()) {
     $item = $element->GetFields();
-    $products[$item["PROPERTY_CML2_ARTICLE_VALUE"]] = array(
+    $products[$item["PROPERTY_MATCHING_VALUE"]] = array(
         "ID" => $item["ID"],
         "PRICE" => $item["CATALOG_PRICE_1"],
+        "ARTICLE" => $item["PROPERTY_ARTICLE_VALUE"]
     );
 }
 
@@ -78,28 +79,34 @@ foreach ($xml->Каталог->Товары->Товар as $arProduct) {
         continue;
     }
 
-    $articul = strval($arProduct->Артикул);
+    $articul = strval($arProduct->Код);
     $id = strval($arProduct->Ид);
+
+    /* Изменим или добавим артикул */
+
+    if($products[$id]["ARTICLE"] != $articul) {
+        $blockElement->SetPropertyValuesEx($products[$id]["ID"], CATALOG_IBLOCK_ID, array("ARTICLE" => $articul));
+    }
 
     /* Проставляем цену */
 
-    if(empty($products[$articul]["ID"])) {
+    if(empty($products[$id]["ID"])) {
         $priceResult = "Товар не найден";
         continue;
     }
-    else if(empty($products[$articul]["PRICE"])) {
+    else if(empty($products[$id]["PRICE"])) {
 
         $arFields = Array(
-            "PRODUCT_ID" => $products[$articul]["ID"],
+            "PRODUCT_ID" => $products[$id]["ID"],
             "CATALOG_GROUP_ID" => 1, // Базовая цена
             "PRICE" => $arrOffers[$id]["price"],
             "CURRENCY" => "RUB",
         );
 
         if (CPrice::Add($arFields)) $priceResult = "Добавлено";
-        else $priceResult = "Ошибка ID" . $products[$articul]["ID"] . ", цена " . $arrOffers[$id]["price"];
+        else $priceResult = "Ошибка ID" . $products[$id]["ID"] . ", цена " . $arrOffers[$id]["price"];
     }
-    else if($products[$articul]["PRICE"] != $arrOffers[$id]["price"]){
+    else if($products[$id]["PRICE"] != $arrOffers[$id]["price"]){
         $arFields = Array(
             "PRODUCT_ID" => $products[$articul]["ID"],
             "CATALOG_GROUP_ID" => 1, // Базовая цена
@@ -135,28 +142,28 @@ foreach ($xml->Каталог->Товары->Товар as $arProduct) {
             $priperty[$arStorageMask[$keyStorage]] = $arStorage; // добавим количество в массив $priperty для записи в свойства
         }
         if(!empty($priperty)) {
-            $blockElement->SetPropertyValuesEx($products[$articul]["ID"], CATALOG_IBLOCK_ID, $priperty); // запишем в массив TODO: оптимизировать: проверять, нужно обновлять или нет
+            $blockElement->SetPropertyValuesEx($products[$id]["ID"], CATALOG_IBLOCK_ID, $priperty); // запишем в массив TODO: оптимизировать: проверять, нужно обновлять или нет
         }
     }
 
     /* Добавим количество в товар */
     $storageID = false;
-    $requestStorage = CCatalogStoreProduct::GetList( array(), array( "PRODUCT_ID" => $products[$articul]["ID"], "STORE_ID" => 1 ) );
+    $requestStorage = CCatalogStoreProduct::GetList( array(), array( "PRODUCT_ID" => $products[$id]["ID"], "STORE_ID" => 1 ) );
     if ($arrStorage = $requestStorage->Fetch()) $storageID = $arrStorage["ID"];
 
     $arFieldsStorage = Array(
-        "PRODUCT_ID" => $products[$articul]["ID"],
+        "PRODUCT_ID" => $products[$id]["ID"],
         "STORE_ID" => 1,
         "AMOUNT" => $storageCount,
     );
     if ( $storageID ) {
         CCatalogStoreProduct::Update($storageID, $arFieldsStorage);
-        CCatalogProduct::add(array("ID" => $products[$articul]["ID"], "QUANTITY" => $storageCount));
+        CCatalogProduct::add(array("ID" => $products[$id]["ID"], "QUANTITY" => $storageCount));
         $storageResult = "Обновлено";
     }
     else {
         CCatalogStoreProduct::Add($arFieldsStorage);
-        CCatalogProduct::add(array("ID" => $products[$articul]["ID"], "QUANTITY" => $storageCount));
+        CCatalogProduct::add(array("ID" => $products[$id]["ID"], "QUANTITY" => $storageCount));
         $storageResult = "Добавлено";
     }
 
@@ -165,7 +172,7 @@ foreach ($xml->Каталог->Товары->Товар as $arProduct) {
     echo "<tr>
                 <td>ID: ".$id."</td>
                 <td>Артикул: ".$articul."</td>
-                <td>Цена: ".$products[$articul]["ID"]." [".$priceResult."]</td>
+                <td>Цена: ".$products[$id]["ID"]." [".$priceResult."]</td>
                 <td>На складе: ".$storageCount." шт. [".$storageResult."]</td>
           </tr>";
     $counter++;

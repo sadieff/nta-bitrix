@@ -60,7 +60,7 @@ $tagMap = array(
 
 $rsSections = CIBlockSection::GetList(
     array("DEPTH_LEVEL" => "ASC", "SORT" => "ASC"),
-    array("ACTIVE" => "Y", "IBLOCK_ID" => IBLOCK_ID_1C, "GLOBAL_ACTIVE" => "Y"), 
+    array("ACTIVE" => "Y", "IBLOCK_ID" => IBLOCK_ID_1C, "GLOBAL_ACTIVE" => "Y"),
     false,
     array("IBLOCK_ID", "ID", "NAME", "DEPTH_LEVEL", "IBLOCK_SECTION_ID")
 );
@@ -75,7 +75,7 @@ while($arSection = $rsSections->GetNext()) {
     if(!empty($matches[0])) {
         if(!empty($tagSectionMap[$arSection["IBLOCK_SECTION_ID"]]["TAGS"] ) && array_search($matches[0][0], $tagSectionMap[$arSection["IBLOCK_SECTION_ID"]]["TAGS"] ) === false) {
 
-                $sectionProps["TAGS"] = array_merge($tagSectionMap[$arSection["IBLOCK_SECTION_ID"]]["TAGS"], $matches[0]);
+            $sectionProps["TAGS"] = array_merge($tagSectionMap[$arSection["IBLOCK_SECTION_ID"]]["TAGS"], $matches[0]);
 
         }
         else $sectionProps["TAGS"] = $matches[0];
@@ -94,7 +94,7 @@ while($arSection = $rsSections->GetNext()) {
 
 $requestSections = CIBlockSection::GetList(
     array("DEPTH_LEVEL"=>"ASC", "SORT"=>"ASC"),
-    array("ACTIVE" => "Y", "IBLOCK_ID" => CATALOG_IBLOCK_ID, "GLOBAL_ACTIVE"=>"Y",), 
+    array("ACTIVE" => "Y", "IBLOCK_ID" => CATALOG_IBLOCK_ID, "GLOBAL_ACTIVE"=>"Y",),
     false,
     array("IBLOCK_ID", "ID", "NAME", "DEPTH_LEVEL", "IBLOCK_SECTION_ID", "CODE")
 );
@@ -120,21 +120,19 @@ $requestElementCatalog  = CIBlockElement::GetList(
     array("IBLOCK_ID" => CATALOG_IBLOCK_ID), // проверка по артикулу TODO: отслеживать дату изменения у элементов
     false,
     false,
-    array("ID","IBLOCK_ID",/*"PROPERTY_CML2_ARTICLE",*/"TIMESTAMP_X","PROPERTY_*")
+    array("ID","IBLOCK_ID", "TIMESTAMP_X","PROPERTY_*")
 );
 $arrElementsCatalog = [];
 while ($elementCatalog = $requestElementCatalog -> GetNextElement()) {
     $item = $elementCatalog->GetFields();
     $property = $elementCatalog->GetProperties();
-    $arrElementsCatalog[$property["CML2_ARTICLE"]["VALUE"]] = array(
+    $arrElementsCatalog[$property["MATCHING"]["VALUE"]] = array(
         "ID" => $item["ID"],
-        "ARTICUL" => $property["CML2_ARTICLE"]["VALUE"],
+        "MATCHING" => $property["MATCHING"]["VALUE"], // сопоставление по ID  с каталогом из 1С
         "TIMESTAMP_X" => $item["TIMESTAMP_X"],
         "PROPERTIES" => $property
     );
 }
-
-//p($arrElementsCatalog);
 
 /* обойдем все элементы из 1С */
 
@@ -145,7 +143,7 @@ $request1CElements  = CIBlockElement::GetList(
     array("IBLOCK_ID" => IBLOCK_ID_1C),
     false,
     false,
-    array("ID","DATE_CREATE","CREATED_BY","IBLOCK_ID","ACTIVE","NAME","PREVIEW_TEXT","USER_NAME","CREATED_USER_NAME","IBLOCK_SECTION_ID")
+    array("ID","DATE_CREATE", "XML_ID", "CREATED_BY","IBLOCK_ID","ACTIVE","NAME","PREVIEW_TEXT","USER_NAME","CREATED_USER_NAME","IBLOCK_SECTION_ID")
 );
 
 $resultCount = 0;
@@ -156,11 +154,12 @@ $resultUpdated = 0;
 
 while ($elements1C = $request1CElements -> GetNextElement()){
 
+    $resultCount++;
 
     $item = $elements1C->GetFields();
     $prop["PROPERTIES"] = $elements1C->GetProperties();
 
-    $articul = $prop["PROPERTIES"]["CML2_ARTICLE"]["VALUE"];
+    $articul = $item["XML_ID"]; // сопоставление теперь по полю MATCHING
     $elementBrand = createCode($prop["PROPERTIES"]["BREND"]["VALUE"]);
     $elementModel = createCode($prop["PROPERTIES"]["MODEL"]["VALUE"]);
     if(empty($elementBrand) || empty($elementModel)) {
@@ -214,13 +213,13 @@ while ($elements1C = $request1CElements -> GetNextElement()){
             $productUse = $tagSectionMap[$item["IBLOCK_SECTION_ID"]]["TAGS"][0];
             $prop["PROPERTIES"]["USE"]["VALUE"] = $tagMap[$productUse];
         }
+        else continue; // Всё что не имеет хештег, модель или бренд идёт в топку
 
         /* добавим новый элемент  */
 
         $arrProperty = array(
             "TIPORAZMER_2_US" => $prop["PROPERTIES"]["TIPORAZMER_2_US"]["VALUE"], // Типоразмер
             "TIP_TT_TL" => $prop["PROPERTIES"]["TIP_TT_TL"]["VALUE"], // Тип (TT/TL)
-            "CML2_ARTICLE" => $prop["PROPERTIES"]["CML2_ARTICLE"]["VALUE"], // Артикул
             "CML2_MANUFACTURER" => $prop["PROPERTIES"]["CML2_MANUFACTURER"]["VALUE"], // Производитель
             "KONSTRUKTSIYA" => $prop["PROPERTIES"]["KONSTRUKTSIYA"]["VALUE"], // Конструкция
             "GLUBINA" => $prop["PROPERTIES"]["GLUBINA"]["VALUE"], // Глубина
@@ -233,6 +232,7 @@ while ($elements1C = $request1CElements -> GetNextElement()){
             "SHIRINA_MM" => $prop["PROPERTIES"]["SHIRINA_MM"]["VALUE"], // Ширина (мм)
             "MODEL" => $prop["PROPERTIES"]["MODEL"]["VALUE"], // Модель
             "USE" => $prop["PROPERTIES"]["USE"]["VALUE"], // Применение
+            "MATCHING" => $item["XML_ID"],
         );
 
         $arrElementProperty = array(
@@ -254,8 +254,6 @@ while ($elements1C = $request1CElements -> GetNextElement()){
         );
         if(CCatalogProduct::Add($productsFields)) $resultProduct++;
 
-        $resultCount++;
-
     }
     else { // Товар уже существует, проверим, надо ли обновить свойства
 
@@ -272,7 +270,6 @@ while ($elements1C = $request1CElements -> GetNextElement()){
         $arrProperty = array( // массив со свойствами, который проверяем
             "TIPORAZMER_2_US", // Типоразмер
             "TIP_TT_TL", // Тип (TT/TL)
-            "CML2_ARTICLE", // Артикул
             "CML2_MANUFACTURER", // Производитель
             "KONSTRUKTSIYA", // Конструкция
             "GLUBINA", // Глубина
@@ -290,7 +287,7 @@ while ($elements1C = $request1CElements -> GetNextElement()){
         $property = [];
         foreach ($arrProperty as $propItem) {
             if($arrElementsCatalog[$articul]["PROPERTIES"][$propItem]["VALUE"] == $prop["PROPERTIES"][$propItem]["VALUE"]) continue;
-            else $property[$propItem] = $prop["PROPERTIES"][$propItem]["VALUE"];
+            else  $property[$propItem] = $prop["PROPERTIES"][$propItem]["VALUE"];
         }
 
         if(!empty($property)) {
