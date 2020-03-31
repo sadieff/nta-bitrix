@@ -19,7 +19,12 @@ $this->setFrameMode(true);
 
         <div class="<?=$arItem["GRID_CLASS"];?>">
             <div class="catalog-section">
+                <? if($arParams["SINGLE_IMAGE"] == "Y"): ?>
                 <img src="<?=$arItem["FIELDS"]["DETAIL_PICTURE"]["SRC"];?>" class="catalog-section_main" alt="">
+                <? else: ?>
+                <img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"];?>"  class="catalog-section_main" alt="">
+                <img src="<?=$arItem["FIELDS"]["DETAIL_PICTURE"]["SRC"];?>" class="catalog-section_hover" alt="">
+                <? endif; ?>
                 <div class="catalog-section_wrap">
                     <div class="catalog-section_title">
                         <?=$arItem["NAME"];?>

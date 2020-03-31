@@ -67,454 +67,92 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
             <div class="filter-home_title">
                 Быстрый поиск шин по параметрам
             </div>
-            <div class="filter-form">
-                <div class="filter-item mm">
-                    <div class="filter-item_title">
-                        Применяемость <span></span>
-                    </div>
-                    <div class="filter-overlay"></div>
-                    <div class="filter-item_wrap">
-                        <div class="filter-select">
-                            <span>Все</span>
-                        </div>
-                        <div class="filter-content">
-                            <div class="filter-content_buttons">
-                                <div class="filter-content_add">
-                                    Подобрать
-                                </div>
-                                <div class="filter-content_clear">
-                                    Сбросить
-                                </div>
-                            </div>
-                            <div class="filter-content_system">
-                                <span>Показать в</span>
-                                <div class="filter-content_system-wrap">
-                                    <label class="input-radio">
-                                        <input type="radio" value="in" class="sys-type" name="prim-system">
-                                        <span>дюймах</span>
-                                    </label>
-                                    <label class="input-radio">
-                                        <input checked="checked" type="radio" value="mm" class="sys-type" name="prim-system">
-                                        <span>миллиметрах</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="filter-content_list">
-                                <label class="input-checkbox">
-                                    <input disabled="disabled" type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input disabled="disabled" checked="checked" type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input checked="checked" type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter-item mm">
-                    <div class="filter-item_title">
-                        Типоразмер <span></span>
-                    </div>
-                    <div class="filter-overlay"></div>
-                    <div class="filter-item_wrap">
-                        <div class="filter-select">
-                            <span>Все</span>
-                        </div>
-                        <div class="filter-content">
-                            <div class="filter-content_buttons">
-                                <div class="filter-content_add">
-                                    Подобрать
-                                </div>
-                                <div class="filter-content_clear">
-                                    Сбросить
-                                </div>
-                            </div>
-                            <div class="filter-content_system">
-                                <span>Показать в</span>
-                                <div class="filter-content_system-wrap">
-                                    <label class="input-radio">
-                                        <input type="radio" value="in" class="sys-type" name="razm-system">
-                                        <span>дюймах</span>
-                                    </label>
-                                    <label class="input-radio">
-                                        <input checked="checked" type="radio" value="mm" class="sys-type" name="razm-system">
-                                        <span>миллиметрах</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="filter-content_list">
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input checked="checked" type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input checked="checked" type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter-item">
-                    <div class="filter-item_title">
-                        Производитель <span></span>
-                    </div>
-                    <div class="filter-overlay"></div>
-                    <div class="filter-item_wrap">
-                        <div class="filter-select">
-                            <span>Все</span>
-                        </div>
-                        <div class="filter-content">
-                            <div class="filter-content_buttons">
-                                <div class="filter-content_add">
-                                    Подобрать
-                                </div>
-                                <div class="filter-content_clear">
-                                    Сбросить
-                                </div>
-                            </div>
-                            <div class="filter-content_list">
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span>Mitas</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span>Continental</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span>Cultor</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter-item mm">
-                    <div class="filter-item_title">
-                        Посадочный диаметр <span></span>
-                    </div>
-                    <div class="filter-overlay"></div>
-                    <div class="filter-item_wrap">
-                        <div class="filter-select">
-                            <span>Все</span>
-                        </div>
-                        <div class="filter-content">
-                            <div class="filter-content_buttons">
-                                <div class="filter-content_add">
-                                    Подобрать
-                                </div>
-                                <div class="filter-content_clear">
-                                    Сбросить
-                                </div>
-                            </div>
-                            <div class="filter-content_system">
-                                <span>Показать в</span>
-                                <div class="filter-content_system-wrap">
-                                    <label class="input-radio">
-                                        <input type="radio" value="in" class="sys-type" name="diam-system">
-                                        <span>дюймах</span>
-                                    </label>
-                                    <label class="input-radio">
-                                        <input checked="checked" type="radio" value="mm" class="sys-type" name="diam-system">
-                                        <span>миллиметрах</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="filter-content_list">
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                                <label class="input-checkbox">
-                                    <input type="checkbox">
-                                    <span class="in">10-16.5</span>
-                                    <span class="mm">121-165</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filter-form_button-box">
-                    <button class="filter-form_button">
-                        Подобрать
-                    </button>
-                </div>
-            </div>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:catalog.smart.filter",
+                "main",
+                array(
+                    "COMPONENT_TEMPLATE" => "module.listing",
+                    "IBLOCK_TYPE" => "catalog",
+                    "IBLOCK_ID" => "1",
+                    "SECTION_ID" => "",
+                    "SECTION_CODE" => "",
+                    "FILTER_NAME" => "arrFilter",
+                    "HIDE_NOT_AVAILABLE" => "N",
+                    "TEMPLATE_THEME" => "blue",
+                    "FILTER_VIEW_MODE" => "horizontal",
+                    "DISPLAY_ELEMENT_COUNT" => "Y",
+                    "SEF_MODE" => "Y",
+                    "CACHE_TYPE" => "A",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_GROUPS" => "Y",
+                    "SAVE_IN_SESSION" => "N",
+                    "INSTANT_RELOAD" => "Y",
+                    "PAGER_PARAMS_NAME" => "arrPager",
+                    "PRICE_CODE" => array(
+                        0 => "BASE",
+                    ),
+                    "CONVERT_CURRENCY" => "Y",
+                    "XML_EXPORT" => "N",
+                    "SECTION_TITLE" => "-",
+                    "SECTION_DESCRIPTION" => "-",
+                    "POPUP_POSITION" => "left",
+                    "SEF_RULE" => "#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
+                    "SECTION_CODE_PATH" => "",
+                    "SMART_FILTER_PATH" => "#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
+                    "CURRENCY_ID" => "RUB"
+                ),
+                false
+            );?>
 
         </div>
 
         <div class="brands-home">
-            <a href="#" class="brands-home_item">
-                <span>
-                    <img src="/local/templates/nta/images/image-5.jpg" alt="">
-                </span>
-            </a>
-            <a href="#" class="brands-home_item">
-                <span>
-                    <img src="/local/templates/nta/images/image-6.jpg" alt="">
-                </span>
-            </a>
-            <a href="#" class="brands-home_item active">
-                <span>
-                    <img src="/local/templates/nta/images/image-3.jpg" alt="">
-                </span>
-            </a>
-            <a href="#" class="brands-home_item active">
-                <span>
-                    <img src="/local/templates/nta/images/image-4.jpg" alt="">
-                </span>
-            </a>
-            <a href="#" class="brands-home_item">
-                <span>
-                    <img src="/local/templates/nta/images/image-7.jpg" alt="">
-                </span>
-            </a>
-            <a href="#" class="brands-home_item">
-                <span>
-                    <img src="/local/templates/nta/images/image-8.jpg" alt="">
-                </span>
-            </a>
-            <a href="#" class="brands-home_item">
-                <span>
-                    <img src="/local/templates/nta/images/image-9.jpg" alt="">
-                </span>
-            </a>
+            <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list",
+                "brands",
+                Array(
+                    "VIEW_MODE" => "TEXT",
+                    "SHOW_PARENT_NAME" => "Y",
+                    "IBLOCK_TYPE" => "",
+                    "IBLOCK_ID" => "1",
+                    "SECTION_USER_FIELDS" => array('UF_*'),
+                    "SECTION_ID" => "",
+                    "SECTION_CODE" => "",
+                    "SECTION_URL" => "",
+                    "COUNT_ELEMENTS" => "Y",
+                    "TOP_DEPTH" => "1",
+                    "SECTION_FIELDS" => "",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "CACHE_TYPE" => "A",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_NOTES" => "",
+                    "CACHE_GROUPS" => "N"
+                )
+            );?>
         </div>
 
-        <!--div class="filter-brands">
-            <label class="filter-brands_item">
-                <input type="checkbox" checked="checked">
-                <span>
-                    <img src="/local/templates/nta/images/image-3.jpg" alt="">
-                </span>
-            </label>
-            <label class="filter-brands_item">
-                <input type="checkbox" checked="checked">
-                <span>
-                    <img src="/local/templates/nta/images/image-4.jpg" alt="">
-                </span>
-            </label>
-            <label class="filter-brands_item">
-                <input type="checkbox">
-                <span>
-                    <img src="/local/templates/nta/images/image-8.jpg" alt="">
-                </span>
-            </label>
-            <label class="filter-brands_item">
-                <input type="checkbox">
-                <span>
-                    <img src="/local/templates/nta/images/image-5.jpg" alt="">
-                </span>
-            </label>
-            <label class="filter-brands_item">
-                <input type="checkbox">
-                <span>
-                    <img src="/local/templates/nta/images/image-7.jpg" alt="">
-                </span>
-            </label>
-            <label class="filter-brands_item">
-                <input type="checkbox">
-                <span>
-                    <img src="/local/templates/nta/images/image-6.jpg" alt="">
-                </span>
-            </label>
-        </div-->
     </div> <!-- filter-home -->
 
     <div class="catalog-home">
         <div class="container">
-            <div class="catalog-row">
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "catalog.uses",
+                array(
+                    "IBLOCK_TYPE" => "catalog",
+                    "IBLOCK_ID"   => "6",
+                    "NEWS_COUNT"  => "10",
+                    "SINGLE_IMAGE" => "N",
+                    "FIELD_CODE" => array("DETAIL_PICTURE"),
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "SET_TITLE" => "N",
+                    "PROPERTY_CODE" => array(
+                        0 => "NAME",
+                    ),
+                ),
+                false
+            ); ?>
+            <!--div class="catalog-row">
                 <div class="col-xl-4 col-lg-6 col-6">
                     <div class="catalog-section">
                         <img src="/local/templates/nta/images/catalog-1.jpg"  class="catalog-section_main" alt="">
@@ -651,7 +289,7 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
         </div>
     </div> <!-- catalog-home -->
 
