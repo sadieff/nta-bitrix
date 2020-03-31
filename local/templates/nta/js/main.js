@@ -73,15 +73,13 @@ $(document).ready(function(){
 
 	/* shop */
 
-	$('.count-minus').on('click', function(){
-		console.log('minus');
+	$('.count-minus:not(.card-minus_js)').on('click', function(){
 		var item = $(this).closest('.section-item_count').find('input');
 		var value = +item.val();
 		if(value > 1) item.val(value - 1);
 	});
 
-	$('.count-plus').on('click', function(){
-		console.log('plus');
+	$('.count-plus:not(.card-plus_js)').on('click', function(){
 		var item = $(this).closest('.section-item_count').find('input');
 		var value = +item.val();
 		item.val(value + 1);

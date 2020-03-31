@@ -155,6 +155,7 @@ foreach ($order->getBasket() as $basketItem) {
     $arBasketItem['QUANTITY_DISPLAY'] .= ' ' . $basketItem->getField('MEASURE_NAME');
 
     $arBasketItem['BASE_PRICE'] = $basketItem->getBasePrice();
+    $arBasketItem['BASE_PRICE_FORMATED'] = number_format($basketItem->getBasePrice(), 0, ',', ' ');
     $arBasketItem['BASE_PRICE_DISPLAY'] = SaleFormatCurrency(
         $arBasketItem['BASE_PRICE'],
         $arBasketItem['CURRENCY']
@@ -227,10 +228,19 @@ $arResult['DELIVERY_DISCOUNT_DISPLAY'] = SaleFormatCurrency(
 );
 
 /**
+* Данные пользователя
+ */
+
+$arResult['USER']['PHONE'] = $USER->GetByID($USER->GetID())->GetNext()['PERSONAL_PHONE'];
+$arResult['USER']['NAME'] = $USER->GetByID($USER->GetID())->GetNext()['NAME'];
+$arResult['USER']['EMAIL'] = $USER->GetByID($USER->GetID())->GetNext()['EMAIL'];
+
+/**
  * ORDER TOTAL PRICES
  */
 //Общая цена без скидок
 $arResult['SUM_BASE'] = $arResult['PRODUCTS_BASE_PRICE'] + $arResult['DELIVERY_BASE_PRICE'];
+$arResult['SUM_BASE_FORMATED'] = number_format($arResult['SUM_BASE'], 0, ',', ' ');
 $arResult['SUM_BASE_DISPLAY'] = SaleFormatCurrency(
     $arResult['SUM_BASE'],
     $arResult['CURRENCY']
@@ -245,6 +255,7 @@ $arResult['DISCOUNT_VALUE_DISPLAY'] = SaleFormatCurrency(
 
 //К оплате
 $arResult['SUM'] = $order->getPrice();
+$arResult['SUM_FORMATED'] = number_format($arResult['SUM'], 0, ',', ' ');
 $arResult['SUM_DISPLAY'] = SaleFormatCurrency(
     $arResult['SUM'],
     $arResult['CURRENCY']

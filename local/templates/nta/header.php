@@ -27,8 +27,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/scroll/jquery.jscrollpane.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/scroll/jquery.mousewheel.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/fb/jquery.fancybox.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/card.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/main.js');
-    //$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/dev.js');
     ?>
 

@@ -24,14 +24,21 @@ $this->addExternalCss($templateFolder . '/selectize/selectize.dropdown.css');
 ?>
 <div class="os-order">
     <?php if (count($component->errorCollection) > 0): ?>
-        <div class="errors_list">
-            <?php foreach ($component->errorCollection as $error):
-                /**
-                 * @var Error $error
-                 */
-                ?>
-                <div class="error"><?= $error->getMessage() ?></div>
-            <?php endforeach; ?>
+        <? $APPLICATION->AddChainItem("Корзина"); ?>
+        <div class="order">
+            <div class="container">
+                <div class="order-success">
+                    <div class="order-success_title">
+                        Пусто
+                    </div>
+                    <div class="order-success_number">
+                        Товары отсутствуют
+                    </div>
+                    <div class="order-success_dsc">
+                        Перейдите в каталог и добавьте товары в корзину для дальнейшей покупки.
+                    </div>
+                </div>
+            </div>
         </div>
     <?php endif; ?>
 
