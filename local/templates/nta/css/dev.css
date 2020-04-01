@@ -29,3 +29,7 @@
 .step-hidden {
     display: none;
 }
+.catalog-navigation_prev.inactive,
+.catalog-navigation_next.inactive {
+    visibility: hidden;
+}

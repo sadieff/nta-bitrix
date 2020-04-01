@@ -54,7 +54,7 @@ $this->setFrameMode(true); ?>
 
 <div class="filter-home catalog-filter">
     <div class="container">
-        <?$APPLICATION->IncludeComponent(
+        <? $APPLICATION->IncludeComponent(
             "bitrix:catalog.smart.filter",
             "main",
             array(
@@ -97,12 +97,14 @@ $this->setFrameMode(true); ?>
 
 <div class="category-section page-brand_section">
     <div class="container">
-        <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list",
+        <? $APPLICATION->IncludeComponent("bitrix:catalog.section.list",
             "brands.listing",
             Array(
                 "PARENT_IMAGE" => CFile::GetPath($arSection["PICTURE"]),
                 "PARENT_BRAND" => $arSection["NAME"],
                 "VIEW_MODE" => "TEXT",
+                "ELEMENT_COUNT" => 8,
+                "SHOW_MORE_BUTTON" => "Y",
                 "SHOW_PARENT_NAME" => "Y",
                 "IBLOCK_TYPE" => "",
                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -121,28 +123,7 @@ $this->setFrameMode(true); ?>
             )
         ); ?>
 
-        <div class="catalog-new_more-box">
-            <a href="#" class="catalog-new_link">
-                Показать еще
-            </a>
-        </div>
-
         <!-- https://tuning-soft.ru/articles/bitrix/pagination-by-sections.html -->
 
-        <div class="catalog-navigation">
-            <a href="#" class="catalog-navigation_prev">
-                Предыдущая страница
-            </a>
-            <ul>
-                <li class="current"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-            <a href="#" class="catalog-navigation_next">
-                Предыдущая страница
-            </a>
-        </div>
     </div>
 </div> <!-- category-section -->
