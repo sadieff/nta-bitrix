@@ -221,91 +221,35 @@ $this->setFrameMode(true); ?>
         </div>
 
         <div class="catalog-new_carousel catalog-new_js owl-carousel">
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-1">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-2">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-3">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-4">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
-            <div class="catalog-new_item">
-                <div class="catalog-new_brand">
-                    <img src="/local/templates/nta/images/image-20.jpg" alt="">
-                </div>
-                <div class="catalog-new_image icon-2">
-                    <img src="/local/templates/nta/images/product-2.png" alt="">
-                </div>
-                <div class="catalog-new_ttl">
-                    Cultor SKID STEER 50
-                </div>
-                <div class="catalog-new_price">
-                    от 175 500 р.
-                </div>
-                <a href="#" class="catalog-new_more">
-                    Подробнее
-                </a>
-            </div>
+            <?
+            global $filterNewModel;
+            $filterNewModel = array('DEPTH_LEVEL' => 2);
+            $APPLICATION->IncludeComponent("bitrix:catalog.section.list",
+                "brands.carousel",
+                Array(
+                    "FILTER_NAME" => "filterNewModel",
+                    "SORT_BY" => "TIMESTAMP_X",
+                    "SORT_ORDER" => "ASC",
+                    "VIEW_MODE" => "TEXT",
+                    "ELEMENT_COUNT" => 8,
+                    "SHOW_MORE_BUTTON" => "Y",
+                    "SHOW_PARENT_NAME" => "Y",
+                    "IBLOCK_TYPE" => "",
+                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                    "SECTION_USER_FIELDS" => array('UF_*'),
+                    "SECTION_ID" => $arSection["ID"],
+                    "SECTION_CODE" => "",
+                    "SECTION_URL" => "",
+                    "COUNT_ELEMENTS" => "Y",
+                    "TOP_DEPTH" => "2",
+                    "SECTION_FIELDS" => "",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "CACHE_TYPE" => "A",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_NOTES" => "",
+                    "CACHE_GROUPS" => "N"
+                )
+            ); ?>
         </div>
 
         <div class="catalog-new_more-box">

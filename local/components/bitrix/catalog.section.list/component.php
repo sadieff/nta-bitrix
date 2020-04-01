@@ -195,9 +195,16 @@ if($this->startResultCache(false, array($arrFilter, $arNavigation, $ajax, ($arPa
 	$intSectionDepth = $arResult["SECTION"]['DEPTH_LEVEL'];
 
 	//ORDER BY
-	$arSort = array(
-		"left_margin"=>"asc",
-	);
+    if(empty($arParams["SORT_BY"])) {
+        $arSort = array(
+            "left_margin"=>"asc",
+        );
+    }
+    else {
+        $arSort = array(
+            $arParams["SORT_BY"] => $arParams["SORT_ORDER"],
+        );
+    }
 	//EXECUTE
 	$rsSections = CIBlockSection::GetList($arSort, array_merge($arrFilter, $arFilter), $arParams["COUNT_ELEMENTS"], $arSelect, $arNavParams);
 	$rsSections->SetUrlTemplates("", $arParams["SECTION_URL"]);
