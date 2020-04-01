@@ -1,5 +1,28 @@
 $(document).ready(function() {
 
+    /* ajax пагинация */
+    $(document).on('click', '.navigation_js a', function (e) {
+        console.log('here');
+        e.stopPropagation();
+        e.preventDefault();
+
+        var uri = $(this).attr('href')+'&ajaxmode=y';
+
+        $('.ajax-container_js').addClass('load'); // отображаем пользователю процесс загрузки
+
+        $.ajax({
+            url: uri,
+            data: '',
+            type: 'get',
+            dataType: 'html',
+            success: function (data) {
+                $('.ajax-container_js .navigation_js').remove(); // удаляем старую навигацию
+                $('.ajax-container_js').append(data); // грузим страницу с новой навигацией
+                $('.ajax-container_js,.ajax-loader').removeClass('load'); // убираем загрузку
+            }
+        });
+    });
+
     /* при загрузке страницы получим количество товаров в корзине */
 
     $.ajax({

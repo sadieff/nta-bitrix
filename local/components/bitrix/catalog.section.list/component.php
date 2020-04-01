@@ -18,6 +18,7 @@ use Bitrix\Main\Loader,
  * Параметры постраничной навигации
  */
 
+if(empty($arParams["ELEMENT_COUNT"])) $arParams["ELEMENT_COUNT"] = 99;
 $arNavParams = array(
     'nPageSize'          => $arParams["ELEMENT_COUNT"],
     'bDescPageNumbering' => false,
@@ -25,6 +26,14 @@ $arNavParams = array(
 );
 CPageOption::SetOptionString("main", "nav_page_in_session", "N");
 $arNavigation = CDBResult::GetNavParams($arNavParams);
+$ajax = "n";
+if($_GET["ajaxmode"] == "y") $ajax = "y";
+
+if($ajax == "y") {
+
+    ob_start();
+
+}
 
 /*************************************************************************
 	Processing of received parameters
@@ -66,7 +75,7 @@ $arResult["SECTIONS"]=array();
 /*************************************************************************
 			Work with cache
 *************************************************************************/
-if($this->startResultCache(false, array($arrFilter, $arNavigation, ($arParams["CACHE_GROUPS"]==="N"? false: $USER->GetGroups()))))
+if($this->startResultCache(false, array($arrFilter, $arNavigation, $ajax, ($arParams["CACHE_GROUPS"]==="N"? false: $USER->GetGroups()))))
 {
 	if(!Loader::includeModule("iblock"))
 	{
@@ -242,7 +251,7 @@ if($this->startResultCache(false, array($arrFilter, $arNavigation, ($arParams["C
         $this
     );
 
-	$this->includeComponentTemplate();
+    $this->includeComponentTemplate();
 
 }
 
@@ -309,4 +318,14 @@ if($arResult["SECTIONS_COUNT"] > 0 || isset($arResult["SECTION"]))
 				$APPLICATION->AddChainItem($arPath["NAME"], $arPath["~SECTION_PAGE_URL"]);
 		}
 	}
+}
+
+if($ajax == "y") {
+
+    $output = ob_get_contents();
+    $APPLICATION->RestartBuffer();
+    while(ob_end_clean());
+    echo $output;
+    die();
+
 }

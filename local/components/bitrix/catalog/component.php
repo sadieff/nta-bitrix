@@ -4,13 +4,16 @@
 
 $filterElements = [];
 
-$Result = CIBlockElement::GetList(
-    array("SORT" => "ASC"),
-    array("IBLOCK_ID" => array($arParams["FILTER_SECTION_IBLOCK_ID"],$arParams["FILTER_PARAMS_IBLOCK_ID"])),
-    false,
-    false,
-    array("DETAIL_PAGE_URL","ID","IBLOCK_ID")
-);
+if(CModule::IncludeModule("iblock")){
+    $Result = CIBlockElement::GetList(
+        array("SORT" => "ASC"),
+        array("IBLOCK_ID" => array($arParams["FILTER_SECTION_IBLOCK_ID"],$arParams["FILTER_PARAMS_IBLOCK_ID"])),
+        false,
+        false,
+        array("DETAIL_PAGE_URL","ID","IBLOCK_ID")
+    );
+}
+
 while ($element = $Result -> GetNextElement()){
     $item = $element->GetFields();
     $filterElements[$item["DETAIL_PAGE_URL"]] = array(

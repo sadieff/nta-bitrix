@@ -38,4 +38,4 @@ $this->setFrameMode(true); ?>
 
 </div>
 
-<?=$arResult["NAV_STRING"]; ?>
+<?=$arResult["NAV_STRING"];?>

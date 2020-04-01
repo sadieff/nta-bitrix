@@ -96,7 +96,7 @@ $this->setFrameMode(true); ?>
 </div> <!-- filter-home -->
 
 <div class="category-section page-brand_section">
-    <div class="container">
+    <div class="container ajax-container_js">
         <? $APPLICATION->IncludeComponent("bitrix:catalog.section.list",
             "brands.listing",
             Array(
@@ -122,8 +122,5 @@ $this->setFrameMode(true); ?>
                 "CACHE_GROUPS" => "N"
             )
         ); ?>
-
-        <!-- https://tuning-soft.ru/articles/bitrix/pagination-by-sections.html -->
-
     </div>
 </div> <!-- category-section -->
