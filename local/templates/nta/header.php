@@ -81,9 +81,15 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                 <input type="text" name="srch" placeholder="Поиск">
                                 <button></button>
                             </div>
-                            <a href="#" class="header-top_cabinet">
-                                Личный кабинет
-                            </a>
+                            <? if ($USER->IsAuthorized()): ?>
+                                <a href="/personal/" class="header-top_cabinet">
+                                    <?=$USER->GetByID($USER->GetID())->GetNext()['LOGIN'];?>
+                                </a>
+                            <? else: ?>
+                                <a href="#" class="header-top_cabinet open-login_js">
+                                    Личный кабинет
+                                </a>
+                            <? endif; ?>
                             <a href="#" class="header-top_compare">
                                 Сравнить
                                 <span>2</span>

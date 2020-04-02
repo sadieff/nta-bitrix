@@ -95,13 +95,15 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
         <div class="modal-tab_box">
             <div class="modal-tab_content active">
 
-                <form action="">
+                <form action="login.php?login=yes">
+                    <input type="hidden" name="AUTH_FORM" value="Y" />
+                    <input type="hidden" name="TYPE" value="AUTH" />
                     <div class="modal-input">
                         <div class="modal-input_label">
                             Логин
                         </div>
                         <div class="modal-input_input">
-                            <input type="text" name="login" autocomplete="off" data-rules="required">
+                            <input type="text" name="USER_LOGIN" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -109,7 +111,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             Пароль
                         </div>
                         <div class="modal-input_input">
-                            <input type="password" name="password" autocomplete="off" data-rules="required">
+                            <input type="password" name="USER_PASSWORD" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-button_box">
@@ -126,13 +128,13 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     Для регистрации заполните поля ниже<br>
                     и нажмите Зарегистрироваться
                 </div>
-                <form action="">
+                <form action="register.php">
                     <div class="modal-input">
                         <div class="modal-input_label">
                             Логин
                         </div>
                         <div class="modal-input_input">
-                            <input type="text" name="login" autocomplete="off" data-rules="required">
+                            <input type="text" name="REGISTER[LOGIN]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -140,7 +142,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             Телефон
                         </div>
                         <div class="modal-input_input">
-                            <input type="text" name="phone" autocomplete="off" data-rules="required">
+                            <input type="text" name="REGISTER[PERSONAL_PHONE]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -148,7 +150,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             ИНН
                         </div>
                         <div class="modal-input_input">
-                            <input type="text" name="inn" autocomplete="off" data-rules="required">
+                            <input type="text" name="REGISTER[WORK_DEPARTMENT]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -156,7 +158,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             Компания
                         </div>
                         <div class="modal-input_input">
-                            <input type="text" name="company" autocomplete="off" data-rules="required">
+                            <input type="text" name="REGISTER[WORK_COMPANY]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -164,7 +166,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             Почта
                         </div>
                         <div class="modal-input_input">
-                            <input type="text" name="email" autocomplete="off" data-rules="required">
+                            <input type="text" name="REGISTER[EMAIL]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -172,7 +174,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             Пароль
                         </div>
                         <div class="modal-input_input">
-                            <input type="password" name="password" autocomplete="off" data-rules="required">
+                            <input type="password" name="REGISTER[PASSWORD]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
                     <div class="modal-input">
@@ -180,7 +182,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             Подтвердите пароль
                         </div>
                         <div class="modal-input_input">
-                            <input type="password" name="password" autocomplete="off" data-rules="required">
+                            <input type="password" name="REGISTER[CONFIRM_PASSWORD]" autocomplete="off" data-rules="required">
                         </div>
                     </div>
 
@@ -194,6 +196,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     <div class="modal-button_box">
                         <button class="go">Зарегистрироваться</button>
                     </div>
+
+                    <input type="hidden" name="register_submit_button" value="Регистрация" />
                 </form>
 
             </div>

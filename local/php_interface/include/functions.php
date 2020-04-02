@@ -42,3 +42,10 @@ function reduce ($string, $lingth){
     $string = substr($string, 0, strrpos($string, ' '));
     return $string;
 }
+
+function getAjaxContent($output){
+    //$APPLICATION->RestartBuffer();
+    while(ob_end_clean());
+    echo $output;
+    die();
+}

@@ -31,8 +31,10 @@ $(document).ready(function() {
         type:'post',
         dataType: 'JSON',
         success:function(data){
-            $('.header-bascket span, .header-top_cart span').css('display', 'block');
-            $('.header-bascket span, .header-top_cart span').text(data.count);
+            if(data.count > 0) {
+                $('.header-bascket span, .header-top_cart span').css('display', 'block');
+                $('.header-bascket span, .header-top_cart span').text(data.count);
+            }
         }
     });
 
@@ -104,3 +106,155 @@ $(document).ready(function() {
     }
 
 });
+
+(function($){
+    $(function(){
+        $(document).on('click', '.go', function(e){
+
+            e.stopPropagation();
+            e.preventDefault();
+
+            var $form = $(this).closest('form');
+            var data = $form.serialize();
+            var action = $form.attr('action');
+
+            var rules = Object();
+
+            var inputs = $form.find('input').add('textarea', $form.get(0));
+
+            var validate = true;
+
+            inputs.each(function(){
+
+                var r = $(this).data('rules');
+
+                if (r && r.length != 0){
+
+                    rules[$(this).attr('name')] = r;
+
+                    r = r.split(',');
+
+                    for (i = 0; i < r.length; i++)
+                    {
+                        var rule = r[i];
+                        if (validator[rule]){
+                            if ( !validator[rule]($(this)) ){
+                                validate = false;
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (!validate) return;
+
+            var btn = $(this).addClass('btn-desabled').removeClass('go');
+
+            $.ajax({
+                url: '/local/ajax/'+action,
+                data: data,
+                type:'post',
+                dataType: 'JSON',
+                success:function(data){
+
+                    btn.addClass('go').removeClass('btn-desabled');
+
+                    if(data.status == "success" && data.redirect) {
+                        document.location.href = data.redirect;
+                    }
+
+                    if((data.status == "success" || data.status == "error")  && data.content) {
+                        $.fancybox.open('<div class="modal">' +
+                            '<div class="modal-title">'+data.title+'</div>' +
+                            '<div class="modal-button_box">'+data.content+'</div>' +
+                        '</div>');
+                    }
+                    else {
+                        $.fancybox.open('<div class="modal">' +
+                            '<div class="modal-title">'+data.title+'</div>' +
+                            '<div class="modal-button_box">' +
+                                '<div class="modal-dsc">'+data.text+'</div>' +
+                            '</div>' +
+                        '</div>');
+                    }
+
+                }
+            });
+
+            return false;
+        });
+
+        $('input').add('textarea').on('focus', function(){
+            $(this).parent()
+                .removeClass('wrong');
+        }).each( function(){
+
+            if ( $(this).data('rules') ){
+                $(this).wrap('<div class="feild_wrapper"></div>');
+                $(this).parent().append('<span class="error_label"></span>');
+            }
+
+        });
+    });
+
+
+    /* validator */
+
+    var validator = {
+        required:function($i){
+            if ($i.val() == '' || $i.val() == $i.attr('placeholder')){
+                fieldError.call( $i, lang.requiredError );
+
+                return false;
+            }
+            return true;
+        },
+        email:function($i){
+
+            if ($i.val() == '') return true;
+
+            var r = new RegExp(".+@.+\..+","i");
+            if ( ! r.test($i.val()) ){
+                fieldError.call( $i, lang.emailError );
+                return false;
+            }
+            return true;
+        },
+        phone:function($i){
+            console.log('phone');
+            var r = new RegExp("^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$","i");
+            if ( ! r.test($i.val()) ){
+                fieldError.call( $i, lang.phoneError );
+                return false;
+            }
+            return true;
+        }
+    }
+
+    var fieldError = function(message){
+
+        if ( !$(this).parent().hasClass('feild_wrapper') ){
+
+            $(this).wrap('<div class="feild_wrapper"></div>');
+            $(this).parent().append('<span class="error_label"></span>');
+
+        }
+
+        $(this).parent().addClass('wrong');
+        $(this).siblings('.error_label').text( message );
+
+        return false;
+    }
+
+    var lang = {
+        success: 			'Ваша заявка успешно отправлена',
+        error: 				'Произошла ошибка, попробуйте еще раз',
+        name: 				'Имя',
+        phone:				'Телефон',
+        email: 				'Email',
+        programs: 			'Программы',
+        requiredError:		'Это поле не может быть пустым',
+        emailError:			'Поле Email должно содержать корректный адрес',
+        phoneError:			'Укажите корректный номер телефона'
+    };
+})(jQuery);

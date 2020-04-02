@@ -230,10 +230,11 @@ $arResult['DELIVERY_DISCOUNT_DISPLAY'] = SaleFormatCurrency(
 /**
 * Данные пользователя
  */
-
-$arResult['USER']['PHONE'] = $USER->GetByID($USER->GetID())->GetNext()['PERSONAL_PHONE'];
-$arResult['USER']['NAME'] = $USER->GetByID($USER->GetID())->GetNext()['NAME'];
-$arResult['USER']['EMAIL'] = $USER->GetByID($USER->GetID())->GetNext()['EMAIL'];
+if ($USER->IsAuthorized()){
+    $arResult['USER']['PHONE'] = $USER->GetByID($USER->GetID())->GetNext()['PERSONAL_PHONE'];
+    $arResult['USER']['NAME'] = $USER->GetByID($USER->GetID())->GetNext()['NAME'];
+    $arResult['USER']['EMAIL'] = $USER->GetByID($USER->GetID())->GetNext()['EMAIL'];
+}
 
 /**
  * ORDER TOTAL PRICES

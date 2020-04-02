@@ -152,144 +152,6 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
                 ),
                 false
             ); ?>
-            <!--div class="catalog-row">
-                <div class="col-xl-4 col-lg-6 col-6">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-1.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-1-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Индустриальные шины
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-6">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-2.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-2-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Сельскохозяйственные шины
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-6">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-3.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-3-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Крупногабаритные шины
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-6">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-4.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-4-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Лесные шины
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-6">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-5.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-5-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Мотошины Mitas
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_list">
-                                    <ul>
-                                        <li><a href="#">Road</a></li>
-                                        <li><a href="#">Off-road</a></li>
-                                        <li><a href="#">Enduro</a></li>
-                                        <li><a href="#">Trial</a></li>
-                                        <li><a href="#">Scooter</a></li>
-                                        <li><a href="#">ATV</a></li>
-                                    </ul>
-                                </div>
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-6">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-6.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-6-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Велосипедные шины Mitas
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-12">
-                    <div class="catalog-section">
-                        <img src="/local/templates/nta/images/catalog-7.jpg"  class="catalog-section_main" alt="">
-                        <img src="/local/templates/nta/images/catalog-7-hover.jpg" class="catalog-section_hover" alt="">
-                        <div class="catalog-section_wrap">
-                            <div class="catalog-section_title">
-                                Камеры Kabat
-                            </div>
-                            <div class="catalog-section_hidden">
-                                <div class="catalog-section_button-box">
-                                    <a href="#" class="catalog-section_button">
-                                        Смотреть каталог
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div-->
         </div>
     </div> <!-- catalog-home -->
 
@@ -595,51 +457,27 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
                 <div class="about-content active">
 
                     <div class="home-news_enum">
-                        <div class="news-item">
-                            <a href="#" class="news-item_image">
-                                <img src="/local/templates/nta/images/image-11.jpg" alt="">
-                            </a>
-                            <div class="news-item_date">
-                                01.11.2019
-                            </div>
-                            <a href="#" class="news-item_title">
-                                Mitas представит свои шины EM на Bauma
-                            </a>
-                            <div class="news-item_dsc">
-                                Прага, 4 апреля 2019 - Mitas, входящий в группу Trelleborg, представит свои шины для дорожно-строительной техники на…
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <a href="#" class="news-item_image">
-                                <img src="/local/templates/nta/images/image-12.jpg" alt="">
-                            </a>
-                            <a href="#" class="news-item_date">
-                                01.11.2019
-                            </a>
-                            <div class="news-item_title">
-                                Mitas представит свои новые продукты на выставке СТТ Москва
-                            </div>
-                            <div class="news-item_dsc">
-                                Прага, 4 апреля 2019 - Mitas, входящий в группу Trelleborg, представит свои шины для дорожно-строительной
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <a href="#" class="news-item_image">
-                                <img src="/local/templates/nta/images/image-13.jpg" alt="">
-                            </a>
-                            <div class="news-item_date">
-                                01.11.2019
-                            </div>
-                            <a href="#" class="news-item_title">
-                                Mitas представит свои шины EM на Bauma
-                            </a>
-                            <div class="news-item_dsc">
-                                Прага, 4 апреля 2019 - Mitas, входящий в группу Trelleborg, представит свои шины для дорожно-строительной техники на…
-                            </div>
-                        </div>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:news.list",
+                            "news.home", // шаблон
+                            array(
+                                "IBLOCK_TYPE" => "content", // тип информационного блока
+                                "IBLOCK_ID"   => "3", // ID информационного блока
+                                "NEWS_COUNT"  => "3", // колличество выводимых элементов
+                                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                "ADD_SECTIONS_CHAIN" => "N",
+                                "SET_TITLE" => "N",
+                                "SORT_BY1" => "ACTIVE_FROM",
+                                "SORT_ORDER1" => "DESC",
+                                "PROPERTY_CODE" => array(
+                                    0 => "NAME", // включить свойство из инфоблока
+                                ),
+                            ),
+                            false
+                        ); ?>
                     </div>
                     <div class="home-news_more">
-                        <a href="#">Все новости</a>
+                        <a href="/news/">Все новости</a>
                     </div>
                 </div>
 
