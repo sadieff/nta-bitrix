@@ -7,7 +7,7 @@ $filterElements = [];
 if(CModule::IncludeModule("iblock")){
     $Result = CIBlockElement::GetList(
         array("SORT" => "ASC"),
-        array("IBLOCK_ID" => array($arParams["FILTER_SECTION_IBLOCK_ID"],$arParams["FILTER_PARAMS_IBLOCK_ID"])),
+        array("IBLOCK_ID" => array($arParams["FILTER_SECTION_IBLOCK_ID"], $arParams["FILTER_PARAMS_IBLOCK_ID"], $arParams["SEO_IBLOCK_ID"])),
         false,
         false,
         array("DETAIL_PAGE_URL","ID","IBLOCK_ID")
@@ -102,6 +102,7 @@ if($arParams["SEF_MODE"] == "Y")
 	if(!empty($filterElements[$requestURLDir])) {
 	    if($filterElements[$requestURLDir]["IBLOCK_ID"] == $arParams["FILTER_PARAMS_IBLOCK_ID"]) $componentPage = "ib_params";
 	    elseif($filterElements[$requestURLDir]["IBLOCK_ID"] == $arParams["FILTER_SECTION_IBLOCK_ID"]) $componentPage = "ib_section";
+	    elseif($filterElements[$requestURLDir]["IBLOCK_ID"] == $arParams["SEO_IBLOCK_ID"]) $componentPage = "ib_seo_section";
     }
 
 	if ($componentPage === "smart_filter")

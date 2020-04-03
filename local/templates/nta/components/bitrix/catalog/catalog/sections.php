@@ -79,24 +79,22 @@ $this->setFrameMode(true); ?>
             Популярные размеры
         </div>
         <div class="category-list_enum">
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
-            <a href="#" class="category-list_item">10-16,5</a>
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "catalog.params", // шаблон
+                array(
+                    "IBLOCK_TYPE" => "catalog", // тип информационного блока
+                    "IBLOCK_ID"   => "7", // ID информационного блока
+                    "NEWS_COUNT"  => "99", // колличество выводимых элементов
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "SET_TITLE" => "N",
+                    "PROPERTY_CODE" => array(
+                        0 => "NAME", // включить свойство из инфоблока
+                    ),
+                ),
+                false
+            ); ?>
         </div>
     </div>
 </div> <!-- category-list -->
@@ -200,16 +198,22 @@ $this->setFrameMode(true); ?>
             Шины по типу техники
         </div>
         <div class="category-list_enum">
-            <a href="#" class="category-list_item active">Шины для трактора</a>
-            <a href="#" class="category-list_item">Шины для самосвала</a>
-            <a href="#" class="category-list_item">Шины для фронтальных погрузчиков</a>
-            <a href="#" class="category-list_item">Шины для JCB</a>
-            <a href="#" class="category-list_item">Шины для комбайна</a>
-            <a href="#" class="category-list_item">Шины для крана</a>
-            <a href="#" class="category-list_item">Шины для экскаваторов-погрузчиков</a>
-            <a href="#" class="category-list_item">Шины для катка</a>
-            <a href="#" class="category-list_item">Шины для грейдера</a>
-            <a href="#" class="category-list_item">Шины для мини погрузчиков</a>
+            <? $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "catalog.params", // шаблон
+                array(
+                    "IBLOCK_TYPE" => "catalog", // тип информационного блока
+                    "IBLOCK_ID"   => "9", // ID информационного блока
+                    "NEWS_COUNT"  => "99", // колличество выводимых элементов
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "SET_TITLE" => "N",
+                    "PROPERTY_CODE" => array(
+                        0 => "NAME", // включить свойство из инфоблока
+                    ),
+                ),
+                false
+            ); ?>
         </div>
     </div>
 </div> <!-- category-list -->

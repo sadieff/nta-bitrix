@@ -7,6 +7,7 @@ $APPLICATION->SetTitle("Главная");
 	Array(
 	    "FILTER_SECTION_IBLOCK_ID" => "6", // Инфоблок-фильтр "Разделы"
 	    "FILTER_PARAMS_IBLOCK_ID" => "7", // Инфоблок-фильтр "По параметрам"
+	    "SEO_IBLOCK_ID" => "9", // СЕО-инфоблок "По типу техники"
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",

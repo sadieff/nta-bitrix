@@ -2,7 +2,7 @@
 $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
 
 $cache = Bitrix\Main\Data\Cache::createInstance();
-if ($cache->initCache($cacheTime, $cacheId, $cacheDir) && 0)
+if ($cache->initCache($cacheTime, $cacheId, $cacheDir))
 {
     $mapSection = $cache->getVars();
 }
