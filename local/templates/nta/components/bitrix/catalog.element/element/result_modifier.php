@@ -28,3 +28,38 @@ $arResult['ARR_MAP_OPTIONS'] = array(
     "GLUBINA",
     "SLOYNOST",
 );
+
+/* storages */
+
+$arResult["STRORAGES"] = [];
+$arResult["STRORAGES_MAP"] = array(
+    "STORAGE_OBUHOVO",
+    "STORAGE_NEVA",
+    "STORAGE_ROSTOV",
+    "STORAGE_KUBAN",
+    "STORAGE_LIPECK",
+    "STORAGE_PERM",
+    "STORAGE_UFA",
+    "STORAGE_NOVOSIB",
+    "STORAGE_NOVOCUZ",
+);
+
+foreach ($arResult["STRORAGES_MAP"] as $storageItem) {
+
+    $value = $arResult["PROPERTIES"][$storageItem]["VALUE"];
+
+    if(empty($value) || $value == 0) $position = 0;
+    elseif ($value >= 2) $position = 1;
+    elseif ($value >= 5) $position = 2;
+    elseif ($value >= 13) $position = 3;
+    elseif ($value >= 23) $position = 4;
+    else $position = 5;
+
+    $arResult["STRORAGES"][] = array(
+        "NAME" =>  $arResult["PROPERTIES"][$storageItem]["HINT"],
+        "VALUE" => $value ? $value : 0,
+        "POSITION" => $position,
+    );
+}
+
+//p($arResult["STRORAGES"]);

@@ -45,7 +45,7 @@ $this->setFrameMode(true); ?>
             <?=$arItem["PROPERTIES"]["SLOYNOST"]["VALUE"];?>
         </div>
         <div class="section-item_quantity">
-            <span class="step-3"></span>
+            <span class="step-<?=$arItem['STROGAE_POSITION'];?>"></span>
         </div>
         <div class="section-item_count">
             <div class="section-item_count-wrap">

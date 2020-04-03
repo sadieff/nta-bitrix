@@ -69,102 +69,22 @@ $this->setFrameMode(true); ?>
                                 </div>
 
                                 <div class="element-storage_box">
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Санкт-Петербург
+
+                                    <? foreach ($arResult["STRORAGES"] as $storage): ?>
+
+                                        <div class="element-storage_item">
+                                            <div class="element-storage_ttl">
+                                                <?=$storage["NAME"];?>
+                                            </div>
+                                            <div class="element-storage_quantity">
+                                                <? for($i = 1; $i <= 5; $i++): ?>
+                                                <span<? if($i <= $storage["POSITION"]): ?> class="active"<? endif; ?>></span>
+                                                <? endfor; ?>
+                                            </div>
                                         </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Ростов-на-Дону
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Уфа
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Новосибирск
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Липецк
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Краснодар
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Пермь
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="element-storage_item">
-                                        <div class="element-storage_ttl">
-                                            Новокузнецк
-                                        </div>
-                                        <div class="element-storage_quantity">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
+
+                                    <? endforeach; ?>
+
                                 </div>
 
                                 <a href="#" class="section-detail_button">
@@ -174,7 +94,7 @@ $this->setFrameMode(true); ?>
 
                         </div>
                     </div>
-                    <div class="element-shop">
+                    <div class="element-shop product-js">
                         <div class="element-shop_box">
 
                             <div class="element-shop_price-ttl">
@@ -196,21 +116,21 @@ $this->setFrameMode(true); ?>
                             <div class="element-shop_options">
                                 <div class="element-shop_option">
                                     <label class="input-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="camera">
                                         <span>+ Камера</span>
                                     </label>
                                     <label class="input-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="lenta">
                                         <span>+ Ободная лента</span>
                                     </label>
                                     <label class="input-checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="kolco">
                                         <span>+ Уплотнительное кольцо</span>
                                     </label>
                                 </div>
                             </div>
 
-                            <div class="element-shop_bay">
+                            <div class="element-shop_bay add-bascket_js" data-product="<?=$arResult['ID'];?>">
                                 Купить
                             </div>
                             <div class="section-detail_button element-shop_one-click">
