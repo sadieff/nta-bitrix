@@ -3,7 +3,6 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 $APPLICATION->SetTitle('Главная');
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
 ?>
-    <script data-skip-moving="true" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=8d69c24a-14dd-41e7-91ff-60bee477e82c"></script>
 
     <div class="main-slider owl-carousel">
         <div class="main-sliders_item">
@@ -187,166 +186,13 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
         </div>
     </div> <!-- advantage -->
 
-    <div class="map">
-        <div class="container">
-            <div class="map-title">
-                Региональная сеть
-            </div>
-        </div>
-        <div class="map-wrap">
-            <div class="map-list">
-                <div class="map-select">
-                    Выберите город...
-                </div>
-                <ul>
-                    <li data-map="55.767363397028284,37.62173055468749">
-                        <div class="map-title_text">Москва</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>НША Центральный офис</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="59.91807704072416,30.304899499999895">
-                        <div class="map-title_text">Санкт-Петербург</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Санкт-Петербург</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="47.2341765529697,39.7236733417968">
-                        <div class="map-title_text">Ростов-на-Дону</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Ростов-на-Дону</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="54.73427066621253,55.95944691210932">
-                        <div class="map-title_text">Уфа</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Уфа</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="52.60358425779388,39.59623749999995">
-                        <div class="map-title_text">Липецк</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Липецк</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="45.034085505425445,38.97353382519526">
-                        <div class="map-title_text">Краснодар</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Краснодар</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="58.00242523797988,56.23079379101552">
-                        <div class="map-title_text">Пермь</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Пермь</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="53.75435168867419,87.13507178027332">
-                        <div class="map-title_text">Новокузнецк</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Новокузнецк</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li data-map="55.025918488520055,82.95191912695314">
-                        <div class="map-title_text">Новосибирск</div>
-                        <div class="map-info">
-                            <div class="map-info_box">
-                                <h3>Новокузнецк</h3>
-                                <p>109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1</p>
-                                <a href="tel:+7(495) 252-04-45">+7(495) 252-04-45</a>
-                            </div>
-                            <div class="map-info_box">
-                                <h3>График работы:</h3>
-                                <p>пн-чтв. с 9:00 до 18:00,</p>
-                                <p>пт. с 9:00 до 17:00</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div id="map"></div>
-
-            <div class="map-mobile_info">
-                <div class="container">
-                    <div class="map-info">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <? $APPLICATION->IncludeFile(
+        "/local/include/map.php",
+        Array(
+             "TITLE" => "Региональная сеть",
+        ),
+        Array("MODE"=>"php")
+    ); ?>
 
     <div class="about">
         <div class="container">

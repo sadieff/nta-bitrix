@@ -65,14 +65,14 @@ class Iblock
             $html .= '<tbody>';
                 $html .= '<tr>';
                     $html .= '<td>';
-                    $html .= '<b>Вопрос:</b>';
+                    $html .= '<b>Заголовок:</b>';
                     $html .= '<input type="text" style="width: 100%;" name="'.$strHTMLControlName["DESCRIPTION"].'" value="' . $value['DESCRIPTION'] . '">';
                     $html .= '</td>';
             $html .= '</tr>';
             $html .= '<tr>';
                     $html .= '<td>';
-                    $html .= '<b>Ответ:</b>';
-                    $html .= '<textarea style="width: 100%;" rows="8" name="'.$strHTMLControlName["VALUE"].'">' . $value['VALUE'] . '</textarea>';
+                    $html .= '<b>Значение:</b>';
+                    $html .= '<textarea style="width: 100%;" rows="3" name="'.$strHTMLControlName["VALUE"].'">' . $value['VALUE'] . '</textarea>';
                     $html .= '</td>';
                 $html .= '</tr>';
             $html .= '</tbody>';
