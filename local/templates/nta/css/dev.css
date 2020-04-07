@@ -33,6 +33,14 @@
 .catalog-navigation_next.inactive {
     visibility: hidden;
 }
+.section-item_compare {
+    cursor: pointer;
+}
+a.header-top_compare span,
+a.header-top_compare span {
+    display: none;
+}
+
 .ajax-container_js {
     position: relative;
 }

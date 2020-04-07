@@ -44,7 +44,7 @@ $APPLICATION->SetTitle("Главная");
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "sku,props",
 		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
 		"DETAIL_SET_CANONICAL_URL" => "N",
-		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
+		"DETAIL_SET_VIEWED_IN_COMPONENT" => "Y",
 		"DETAIL_SHOW_POPULAR" => "Y",
 		"DETAIL_SHOW_SLIDER" => "N",
 		"DETAIL_SHOW_VIEWED" => "Y",

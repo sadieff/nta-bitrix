@@ -38,27 +38,35 @@ $APPLICATION->AddChainItem("Корзина");
 
                     <div class="card-item" data-product-id="<?= $arBasketItem['ID'] ?>">
                         <div class="card-item_info">
-                            <div class="card-item_title">
+                            <a href="<?= $arBasketItem['DETAIL_PAGE_URL'] ?>" class="card-item_title">
                                 <?= $arBasketItem['NAME'] ?>
-                            </div>
+                            </a>
                             <div class="card-item_wrap">
                                 <div class="card-item_image">
-                                    <img src="/local/templates/nta/images/product-4.png" alt="">
+                                    <img src="<?= $arBasketItem['PREVIEW_PICTURE'] ?>" alt="">
                                 </div>
                                 <div class="card-item_property">
                                     <div class="element-shop_option">
+                                        <? if($arBasketItem["USE"] != "Камеры"): ?>
                                         <label class="input-checkbox">
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="camera" <? if($arBasketItem["PROPERTIES"]["camera"]["VALUE"] == "Y"): ?>checked="checked"<? endif; ?>>
                                             <span>Камера</span>
                                         </label>
+                                        <? endif; ?>
+
+                                        <? if($arBasketItem["USE"] != "Камеры" && $arBasketItem["USE"] != "Мотошины" && $arBasketItem["USE"] != "Сельскохозяйственные"): ?>
                                         <label class="input-checkbox">
-                                            <input type="checkbox" checked="checked">
+                                            <input type="checkbox" name="lenta" <? if($arBasketItem["PROPERTIES"]["lenta"]["VALUE"] == "Y"): ?>checked="checked"<? endif; ?>>
                                             <span>Ободная лента</span>
                                         </label>
+                                        <? endif; ?>
+
+                                        <? if($arBasketItem["USE"] != "Камеры" && $arBasketItem["USE"] != "Мотошины"): ?>
                                         <label class="input-checkbox">
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="kolco" <? if($arBasketItem["PROPERTIES"]["kolco"]["VALUE"] == "Y"): ?>checked="checked"<? endif; ?>>
                                             <span>Уплотнительное кольцо</span>
                                         </label>
+                                        <? endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +74,7 @@ $APPLICATION->AddChainItem("Корзина");
 
                         <div class="card-item_price">
                             <div class="element-shop_price-ttl card-item_articul">
-                                Артикул: 50022348800
+                                Артикул: <?= $arBasketItem['ARTICLE']; ?>
                             </div>
 
                             <div class="element-shop_pricebox">

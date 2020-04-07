@@ -26,7 +26,7 @@ $(document).ready(function() {
     /* при загрузке страницы получим количество товаров в корзине */
 
     $.ajax({
-        url:'/local/ajax/getCardCount.php',
+        url:'/local/ajax/getcardcount.php',
         data: '',
         type:'post',
         dataType: 'JSON',
@@ -40,21 +40,72 @@ $(document).ready(function() {
 
     /* добавление товара в корзину */
 
+    $.ajax({
+        url:'/local/ajax/getcardcount.php',
+        data: '',
+        type:'post',
+        dataType: 'JSON',
+        success:function(data){
+            if(data.count > 0) {
+                $('.header-bascket span, .header-top_cart span').css('display', 'block');
+                $('.header-bascket span, .header-top_cart span').text(data.count);
+            }
+        }
+    });
+
     $(document).on('click', '.add-bascket_js', function () {
 
         $(this).addClass('active');
 
-        let product = +$(this).data('product');
-        let quantity = +$(this).closest('.product-js').find('input[name=quantity]').val();
+        let data = {};
+        let product = $(this).closest('.product-js');
+        data.product = +$(this).data('product');
+        data.quantity = +product.find('input[name=quantity]').val();
+
+        if(product.find('input[name=camera]').prop("checked")) data.camera = "Y";
+        if(product.find('input[name=lenta]').prop("checked")) data.lenta = "Y";
+        if(product.find('input[name=kolco]').prop("checked")) data.kolco = "Y";
 
         $.ajax({
             url:'/local/ajax/addtocard.php',
-            data: {product: product, quantity: quantity},
+            data: data,
             type:'post',
             dataType: 'JSON',
             success:function(data){
                 $('.header-bascket span, .header-top_cart span').css('display', 'block');
                 $('.header-bascket span, .header-top_cart span').text(data.count);
+            }
+        });
+
+    });
+
+    /* добавление товара в сравнение */
+
+    $.ajax({
+        url:'/local/ajax/addtocompare.php',
+        data: '',
+        type:'post',
+        dataType: 'JSON',
+        success:function(data){
+            if(data.count > 0) {
+                $('.header-top_compare span, .header-top_compare span').css('display', 'block');
+                $('.header-top_compare span, .header-top_compare span').text(data.count);
+            }
+        }
+    });
+
+    $(document).on('click', '.add-compare_js', function () {
+
+        let product = +$(this).data('product');
+
+        $.ajax({
+            url:'/local/ajax/addtocompare.php',
+            data: {action: "ADD_TO_COMPARE_LIST", id: product},
+            type:'post',
+            dataType: 'JSON',
+            success:function(data){
+                $('.header-top_compare span, .header-top_compare span').css('display', 'block');
+                $('.header-top_compare span, .header-top_compare span').text(data.count);
             }
         });
 

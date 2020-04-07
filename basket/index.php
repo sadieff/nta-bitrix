@@ -6,7 +6,9 @@ $APPLICATION->SetTitle("Главная");
 <?$APPLICATION->IncludeComponent(
 	"opensource:order",
 	"bascket",
-	Array()
+	Array(
+		"IBLOCK_ID" => 1
+	)
 );?>
 
 <?

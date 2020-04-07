@@ -14,9 +14,15 @@ CModule::IncludeModule("iblock");
 
 $blockElement = new CIBlockElement;
 
+$props = [];
+if(!empty($_POST["camera"])) $props[] = ['NAME' => 'Камера', 'CODE' => 'camera', 'VALUE' => 'Y'];
+if(!empty($_POST["lenta"])) $props[] = ['NAME' => 'Ободная лента', 'CODE' => 'lenta', 'VALUE' => 'Y'];
+if(!empty($_POST["kolco"])) $props[] = ['NAME' => 'Уплотнительное кольцо', 'CODE' => 'kolco', 'VALUE' => 'Y'];
+
 $fields = [
     'PRODUCT_ID' => $_POST["product"], // ID товара, обязательно
     'QUANTITY' => $_POST["quantity"], // количество, обязательно
+    'PROPS' => $props
 ];
 
 Bitrix\Catalog\Product\Basket::addProduct($fields);

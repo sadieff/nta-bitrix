@@ -132,6 +132,7 @@ foreach ($order->getBasket() as $basketItem) {
      * @var BasketItem $basketItem
      */
     $arBasketItem = [];
+    $arBasketItem['PRODUCT_ID'] = $basketItem->getProductId();
     $arBasketItem['ID'] = $basketItem->getId();
     $arBasketItem['NAME'] = $basketItem->getField('NAME');
     $arBasketItem['CURRENCY'] = $basketItem->getCurrency();
@@ -142,8 +143,10 @@ foreach ($order->getBasket() as $basketItem) {
          * @var BasketPropertyItem $basketPropertyItem
          */
         $propCode = $basketPropertyItem->getField('CODE');
+
         if ($propCode !== 'CATALOG.XML_ID' && $propCode !== 'PRODUCT.XML_ID') {
-            $arBasketItem['PROPERTIES'][] = [
+            $arBasketItem['PROPERTIES'][$basketPropertyItem->getField('CODE')] = [
+                'CODE' => $basketPropertyItem->getField('CODE'),
                 'NAME' => $basketPropertyItem->getField('NAME'),
                 'VALUE' => $basketPropertyItem->getField('VALUE'),
             ];
@@ -172,6 +175,28 @@ foreach ($order->getBasket() as $basketItem) {
         $arBasketItem['SUM'],
         $arBasketItem['CURRENCY']
     );
+
+    /* get proiperty */
+
+    $product = CIBlockElement::GetList(
+        array("SORT" => "ASC"),
+        array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "ID" => $arBasketItem['PRODUCT_ID']),
+        false,
+        false,
+        array("IBLOCK_ID", "ID", "DETAIL_PAGE_URL", "PREVIEW_PICTURE", "PROPERTY_ARTICLE", "PROPERTY_USE")
+    );
+    $element = $product -> GetNextElement();
+    $element = $element -> fields;
+    $arBasketItem['DETAIL_PAGE_URL'] = $element['DETAIL_PAGE_URL'];
+    $arBasketItem['ARTICLE'] = $element['PROPERTY_ARTICLE_VALUE'];
+    $arBasketItem['PREVIEW_PICTURE'] = $element['PREVIEW_PICTURE'];
+    $arBasketItem['USE'] = $element['PROPERTY_USE_VALUE'];
+
+    if(!empty($element['PREVIEW_PICTURE'])){
+        $image = CFile::ResizeImageGet($element['PREVIEW_PICTURE'], array('width'=>95, 'height'=>95), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+        $arBasketItem['PREVIEW_PICTURE'] = $image["src"];
+    }
+    else $arBasketItem['PREVIEW_PICTURE'] = "/local/templates/nta/images/default.jpg";
 
     $arResult['BASKET'][$arBasketItem['ID']] = $arBasketItem;
 }
