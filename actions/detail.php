@@ -8,11 +8,11 @@ $element = explode("?", $_REQUEST["ELEMENT_CODE"]);
     "bitrix:news.detail",
     "news", // шаблон
     Array(
-        "IBLOCK_ID" => "3",  // ID информационного блока
+        "IBLOCK_ID" => "11",  // ID информационного блока
         "IBLOCK_TYPE" => "content",  // тип информационного блока
         "ELEMENT_CODE" => $element[0],  // параметр передаваемой страницы
-        "SECTION_TITLE" => "новости",
-        "SECTION_URI" => "/news/",
+        "SECTION_TITLE" => "акции",
+        "SECTION_URI" => "/actions/",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "N",
         "SET_BROWSER_TITLE" => "Y",

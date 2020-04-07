@@ -87,10 +87,10 @@ $this->setFrameMode(true);
 
         <div class="news-other_wrap">
             <div class="news-other_title">
-                Другие новости
+                Другие <?=$arParams["SECTION_TITLE"];?>
             </div>
-            <a href="/news/" class="news-other_more">
-                Все новости
+            <a href="<?=$arParams["SECTION_URI"];?>" class="news-other_more">
+                Все <?=$arParams["SECTION_TITLE"];?>
             </a>
         </div>
 
@@ -103,7 +103,7 @@ $this->setFrameMode(true);
                 "news.other", // шаблон
                 array(
                     "IBLOCK_TYPE" => "content", // тип информационного блока
-                    "IBLOCK_ID"   => "3", // ID информационного блока
+                    "IBLOCK_ID"   => $arParams["IBLOCK_ID"], // ID информационного блока
                     "NEWS_COUNT"  => "3",
                     "FILTER_NAME" => "arrFilter",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",

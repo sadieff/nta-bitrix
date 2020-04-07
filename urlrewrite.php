@@ -40,4 +40,20 @@ $arUrlRewrite=array (
     'PATH' => '/news/detail.php',
     'SORT' => 100,
   ),
+  5 =>
+  array (
+    'CONDITION' => '#^/actions/(.*)/#',
+    'RULE' => 'ELEMENT_CODE=$1',
+    'ID' => 'bitrix:news',
+    'PATH' => '/actions/detail.php',
+    'SORT' => 100,
+  ),
+  6 =>
+  array (
+    'CONDITION' => '#^/articles/(.*)/#',
+    'RULE' => 'ELEMENT_CODE=$1',
+    'ID' => 'bitrix:news',
+    'PATH' => '/articles/detail.php',
+    'SORT' => 100,
+  ),
 );
