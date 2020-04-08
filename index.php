@@ -230,54 +230,24 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
                 </div>
                 <div class="about-content">
                     <div class="about-cert owl-carousel">
-                        <a href="/local/templates/nta/images/cert-1.jpg" data-fancybox="/local/templates/nta/images" class="about-cert_item">
-                            <div class="about-cert_image">
-                                <img src="/local/templates/nta/images/cert-1.jpg" alt="">
-                            </div>
-                            <div class="about-cert_title">
-                                Сертификат качества
-                            </div>
-                        </a>
-                        <a href="/local/templates/nta/images/cert-2.jpg" data-fancybox="/local/templates/nta/images" class="about-cert_item">
-                            <div class="about-cert_image">
-                                <img src="/local/templates/nta/images/cert-2.jpg" alt="">
-                            </div>
-                            <div class="about-cert_title">
-                                Название сертификаты
-                            </div>
-                        </a>
-                        <a href="/local/templates/nta/images/cert-1.jpg" data-fancybox="/local/templates/nta/images" class="about-cert_item">
-                            <div class="about-cert_image">
-                                <img src="/local/templates/nta/images/cert-1.jpg" alt="">
-                            </div>
-                            <div class="about-cert_title">
-                                Сертификат качества
-                            </div>
-                        </a>
-                        <a href="/local/templates/nta/images/cert-2.jpg" data-fancybox="/local/templates/nta/images" class="about-cert_item">
-                            <div class="about-cert_image">
-                                <img src="/local/templates/nta/images/cert-2.jpg" alt="">
-                            </div>
-                            <div class="about-cert_title">
-                                Название сертификаты
-                            </div>
-                        </a>
-                        <a href="/local/templates/nta/images/cert-1.jpg" data-fancybox="/local/templates/nta/images" class="about-cert_item">
-                            <div class="about-cert_image">
-                                <img src="/local/templates/nta/images/cert-1.jpg" alt="">
-                            </div>
-                            <div class="about-cert_title">
-                                Сертификат качества
-                            </div>
-                        </a>
-                        <a href="/local/templates/nta/images/cert-2.jpg" data-fancybox="/local/templates/nta/images" class="about-cert_item">
-                            <div class="about-cert_image">
-                                <img src="/local/templates/nta/images/cert-2.jpg" alt="">
-                            </div>
-                            <div class="about-cert_title">
-                                Название сертификаты
-                            </div>
-                        </a>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:news.list",
+                            "cert.item", // шаблон
+                            array(
+                                "IBLOCK_TYPE" => "content", // тип информационного блока
+                                "IBLOCK_ID"   => "15", // ID информационного блока
+                                "NEWS_COUNT"  => "9", // колличество выводимых элементов
+                                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                "ADD_SECTIONS_CHAIN" => "N",
+                                "SET_TITLE" => "N",
+                                "SORT_BY1" => "ACTIVE_FROM",
+                                "SORT_ORDER1" => "DESC",
+                                "PROPERTY_CODE" => array(
+                                    0 => "NAME", // включить свойство из инфоблока
+                                ),
+                            ),
+                            false
+                        ); ?>
                     </div>
                 </div>
             </div>
@@ -330,42 +300,29 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
                 <div class="about-content">
 
                     <div class="home-news_enum">
-                        <div class="news-item">
-                            <a href="#" class="news-item_image">
-                                <img src="/local/templates/nta/images/image-10.jpg" alt="">
-                            </a>
-                            <a href="#" class="news-item_title">
-                                Mitas представит свои шины EM на Bauma
-                            </a>
-                            <div class="news-item_dsc">
-                                Прага, 4 апреля 2019 - Mitas, входящий в группу Trelleborg, представит свои шины для дорожно-строительной техники на…
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <a href="#" class="news-item_image">
-                                <img src="/local/templates/nta/images/image-10.jpg" alt="">
-                            </a>
-                            <a href="#" class="news-item_title">
-                                Mitas представит свои шины EM на Bauma
-                            </a>
-                            <div class="news-item_dsc">
-                                Прага, 4 апреля 2019 - Mitas, входящий в группу Trelleborg, представит свои шины для дорожно-строительной техники на…
-                            </div>
-                        </div>
-                        <div class="news-item">
-                            <a href="#" class="news-item_image">
-                                <img src="/local/templates/nta/images/image-10.jpg" alt="">
-                            </a>
-                            <a href="#" class="news-item_title">
-                                Mitas представит свои шины EM на Bauma
-                            </a>
-                            <div class="news-item_dsc">
-                                Прага, 4 апреля 2019 - Mitas, входящий в группу Trelleborg, представит свои шины для дорожно-строительной техники на…
-                            </div>
-                        </div>
+
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:news.list",
+                            "news.home", // шаблон
+                            array(
+                                "IBLOCK_TYPE" => "content", // тип информационного блока
+                                "IBLOCK_ID"   => "10", // ID информационного блока
+                                "NEWS_COUNT"  => "3", // колличество выводимых элементов
+                                "VIEW_DATE" => "N",
+                                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                "ADD_SECTIONS_CHAIN" => "N",
+                                "SET_TITLE" => "N",
+                                "SORT_BY1" => "ACTIVE_FROM",
+                                "SORT_ORDER1" => "DESC",
+                                "PROPERTY_CODE" => array(
+                                    0 => "NAME", // включить свойство из инфоблока
+                                ),
+                            ),
+                            false
+                        ); ?>
                     </div>
                     <div class="home-news_more">
-                        <a href="#">Все статьи</a>
+                        <a href="/articles/">Все статьи</a>
                     </div>
                 </div>
             </div>

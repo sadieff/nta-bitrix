@@ -1,6 +1,16 @@
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
-$APPLICATION->SetTitle("Контакты"); ?>
+$APPLICATION->SetTitle("Контакты");
+
+$arResult = $APPLICATION->IncludeComponent("get:element.property", "",
+    Array(
+        "IBLOCK_ID" => "12",
+        "ELEMENT" => "3444",
+        "OUTPUT" => "RETURN",
+    ),
+    false
+); ?>
 
     <div class="contacts-page">
         <div class="container">
@@ -8,30 +18,20 @@ $APPLICATION->SetTitle("Контакты"); ?>
                 Контакты
             </div>
             <div class="contacts-page_enum">
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>Многоканальный телефон:</span>
+
+                <? foreach ($arResult["PROPERTIES"]["PROPERTY"]["VALUE"] as $key => $arProp): ?>
+
+                    <div class="company-info_item">
+                        <div class="company-info_ttl">
+                            <span><?=$arResult["PROPERTIES"]["PROPERTY"]["DESCRIPTION"][$key];?></span>
+                        </div>
+                        <div class="company-info_value">
+                            <?=$arProp;?>
+                        </div>
                     </div>
-                    <div class="company-info_value">
-                        +7 495 252-04-45
-                    </div>
-                </div>
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>Электронная почта:</span>
-                    </div>
-                    <div class="company-info_value">
-                        info@nta-tyre.ru
-                    </div>
-                </div>
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>Почтовый адрес:</span>
-                    </div>
-                    <div class="company-info_value">
-                        109382, Россия, г. Москва, ул. Совхозная, дом 1 стр. 1
-                    </div>
-                </div>
+
+                <? endforeach; ?>
+
             </div>
         </div>
     </div> <!-- contacts-page -->

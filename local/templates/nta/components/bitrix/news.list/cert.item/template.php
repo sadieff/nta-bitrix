@@ -15,21 +15,13 @@ $this->setFrameMode(true);
 
 <?foreach($arResult["ITEMS"] as $arItem):?>
 
-    <div class="news-item">
-        <a href="<?=$arItem["DETAIL_PAGE_URL"];?>" class="news-item_image">
-            <img src="<?=$arItem["IMAGE"];?>" alt="">
-        </a>
-        <? if($arParams["VIEW_DATE"] != "N"): ?>
-        <div class="news-item_date">
-            <?=$arItem["DATE"];?>
+    <a href="<?=$arItem["IMAGE_BIG"];?>" data-fancybox="cert" class="about-cert_item">
+        <div class="about-cert_image">
+            <img src="<?=$arItem["IMAGE_SMALL"];?>" alt="">
         </div>
-        <? endif; ?>
-        <a href="#" class="news-item_title">
+        <div class="about-cert_title">
             <?=$arItem["NAME"];?>
-        </a>
-        <div class="news-item_dsc">
-            <?=$arItem["PREVIEW_TEXT"];?>
         </div>
-    </div>
+    </a>
 
 <?endforeach;?>
