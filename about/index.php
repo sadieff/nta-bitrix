@@ -2,6 +2,7 @@
 $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
 $APPLICATION->SetTitle("Доставка и оплата");
 
+/* свойства страницы о компании */
 $arCompany = $APPLICATION->IncludeComponent("get:element.property", "",
     Array(
         "IBLOCK_ID" => "14",
@@ -9,7 +10,16 @@ $arCompany = $APPLICATION->IncludeComponent("get:element.property", "",
         "OUTPUT" => "RETURN",
     ),
     false
-); ?>
+);
+/* получение реквезитов */
+$arRequisites = $APPLICATION->IncludeComponent("get:element.property", "",
+    Array(
+        "IBLOCK_ID" => "12",
+        "ELEMENT" => "3445",
+        "OUTPUT" => "RETURN",
+    ),
+    false
+);?>
 
     <div class="static-banner about-static_banner">
         <picture>
@@ -192,52 +202,33 @@ $arCompany = $APPLICATION->IncludeComponent("get:element.property", "",
                 Реквизиты компании
             </div>
             <div class="company-info_enum">
+                <? foreach ($arRequisites["PROPERTIES"]["PROPERTY"]["VALUE"] as $key => $arProp): ?>
+
                 <div class="company-info_item">
                     <div class="company-info_ttl">
-                        <span>Полное наименование организации</span>
+                        <span><?=$arRequisites["PROPERTIES"]["PROPERTY"]["DESCRIPTION"][$key];?></span>
                     </div>
                     <div class="company-info_value">
-                        Общество с ограниченной ответственносьтю “Национальный Шинный Альянс”
+                        <?=$arProp;?>
                     </div>
                 </div>
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>Почтовый адрес</span>
-                    </div>
-                    <div class="company-info_value">
-                        109382, г. Москва, ул. Совхозная, д. 1, стр.1
-                    </div>
-                </div>
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>Идентификационный номер ИНН</span>
-                    </div>
-                    <div class="company-info_value">
-                        7728863936
-                    </div>
-                </div>
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>Код причины постановки на учет КПП</span>
-                    </div>
-                    <div class="company-info_value">
-                        772801001
-                    </div>
-                </div>
-                <div class="company-info_item">
-                    <div class="company-info_ttl">
-                        <span>ОГРН</span>
-                    </div>
-                    <div class="company-info_value">
-                        5137746153420
-                    </div>
-                </div>
+
+                <? endforeach; ?>
             </div>
+
+            <? if(!empty($arRequisites["PROPERTIES"]["FILE"]["VALUE"])):
+                $rsFile = CFile::GetByID($arRequisites["PROPERTIES"]["FILE"]["VALUE"]);
+                $arFile = $rsFile->Fetch();
+                $size = ( $arFile["FILE_SIZE"] / 1024 ) / 1024;
+                $sizeFile = round($size, 2); ?>
+
             <div class="company-info_button_box">
-                <a href="#" class="company-info_link">
-                    Скачать <span>*PDF 3.2mb</span>
+                <a href="<?=CFile::GetPath($arRequisites["PROPERTIES"]["FILE"]["VALUE"]);?>" target="_blank" class="company-info_link">
+                    Скачать <span>*PDF <?=$sizeFile;?>mb</span>
                 </a>
             </div>
+
+            <? endif; ?>
         </div>
     </div> <!-- company-info -->
 
