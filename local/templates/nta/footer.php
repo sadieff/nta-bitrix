@@ -48,7 +48,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                 + 7 (495) 252 04 45
                             </a>
                         </div>
-                        <div class="footer-recall">
+                        <div class="footer-recall recall_js">
                             Заказать звонок
                         </div>
                         <div class="footer-time">
@@ -234,6 +234,78 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 </div>
 
+<div class="modal" id="recall">
+    <div class="modal-title">
+        Обратный звонок
+    </div>
+    <div class="modal-tab_box">
+        <div class="modal-dsc">
+            Оставьте заявку и наш менеджер Вам перезвонит.
+        </div>
+        <form action="feedback.recall.php">
+            <div class="modal-input">
+                <div class="modal-input_label">
+                    ФИО
+                </div>
+                <div class="modal-input_input">
+                    <input type="text" name="name" autocomplete="off" data-rules="required">
+                </div>
+            </div>
+            <div class="modal-input">
+                <div class="modal-input_label">
+                    Телефон
+                </div>
+                <div class="modal-input_input">
+                    <input type="text" name="phone" autocomplete="off" data-rules="required">
+                </div>
+            </div>
+            <div class="modal-button_box">
+                <button class="go">Заказать звонок</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal" id="oneclick">
+    <div class="modal-title">
+        Быстрая покупка
+    </div>
+    <div class="modal-tab_box">
+        <div class="modal-dsc">
+            Оставьте контактные данные
+        </div>
+        <form action="feedback.oneclick.php">
+            <div class="modal-input">
+                <div class="modal-input_label">
+                    ФИО
+                </div>
+                <div class="modal-input_input">
+                    <input type="text" name="name" autocomplete="off" data-rules="required">
+                </div>
+            </div>
+            <div class="modal-input">
+                <div class="modal-input_label">
+                    Телефон
+                </div>
+                <div class="modal-input_input">
+                    <input type="text" name="phone" autocomplete="off" data-rules="required">
+                </div>
+            </div>
+            <div class="modal-input">
+                <div class="modal-input_label">
+                    Email
+                </div>
+                <div class="modal-input_input">
+                    <input type="text" name="email" autocomplete="off" data-rules="required">
+                </div>
+            </div>
+            <div class="modal-button_box">
+                <button class="go">Сделать заказ</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="modal" id="success">
     <div class="modal-title">
         Поздравляем!
@@ -247,112 +319,6 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
             <a href="/" class="modal-button_back">
                 На главную страницу
             </a>
-        </div>
-    </div>
-</div>
-
-<div class="modal modal-order" id="modal-order">
-    <div class="modal-title">
-        Заказ №1 от 01.01.2020
-    </div>
-    <div class="modal-tab_box">
-        <div class="modal-order_status">
-            Статус заказа: <span>Выполнен</span>
-        </div>
-
-        <div class="modal-order_enum">
-            <div class="modal-order_title">
-                    <span class="model-title_num">
-                        №
-                    </span>
-                <span class="modal-title_name">
-                        Наименование
-                    </span>
-                <span class="modal-title_count">
-                        Количество
-                    </span>
-                <span class="modal-title_price">
-                        Сумма
-                    </span>
-            </div>
-            <div class="modal-order_item">
-                <div class="modal-order_num" data-title="№">
-                    1
-                </div>
-                <div class="modal-order_name" data-title="Наименование">
-                    Шина Культор 10-16.5 10PR SKID STEER 50 TL
-                </div>
-                <div class="modal-order_count" data-title="Количество">
-                    20 шт.
-                </div>
-                <div class="modal-order_price" data-title="Сумма">
-                    123 457 р.
-                </div>
-            </div>
-            <div class="modal-order_item">
-                <div class="modal-order_num" data-title="№">
-                    1
-                </div>
-                <div class="modal-order_name" data-title="Наименование">
-                    Шина Культор 10-16.5 10PR SKID STEER 50 TL
-                </div>
-                <div class="modal-order_count" data-title="Количество">
-                    20 шт.
-                </div>
-                <div class="modal-order_price" data-title="Сумма">
-                    123 457 р.
-                </div>
-            </div>
-            <div class="modal-order_item">
-                <div class="modal-order_num" data-title="№">
-                    1
-                </div>
-                <div class="modal-order_name" data-title="Наименование">
-                    Шина Культор 10-16.5 10PR SKID STEER 50 TL
-                </div>
-                <div class="modal-order_count" data-title="Количество">
-                    20 шт.
-                </div>
-                <div class="modal-order_price" data-title="Сумма">
-                    123 457 р.
-                </div>
-            </div>
-            <div class="modal-order_item">
-                <div class="modal-order_num" data-title="№">
-                    1
-                </div>
-                <div class="modal-order_name" data-title="Наименование">
-                    Шина Культор 10-16.5 10PR SKID STEER 50 TL
-                </div>
-                <div class="modal-order_count" data-title="Количество">
-                    20 шт.
-                </div>
-                <div class="modal-order_price" data-title="Сумма">
-                    123 457 р.
-                </div>
-            </div>
-            <div class="modal-order_item">
-                <div class="modal-order_num" data-title="№">
-                    1
-                </div>
-                <div class="modal-order_name" data-title="Наименование">
-                    Шина Культор 10-16.5 10PR SKID STEER 50 TL
-                </div>
-                <div class="modal-order_count" data-title="Количество">
-                    20 шт.
-                </div>
-                <div class="modal-order_price" data-title="Сумма">
-                    123 457 р.
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-order_total">
-            Итого: 160 шт.<br> на сумму <span>124 224 р.</span>
-        </div>
-
-        <div class="modal-order_button_box">
-            <button class="go">Повторить заказ</button>
         </div>
     </div>
 </div>

@@ -21,7 +21,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 $APPLICATION->AddChainItem("Корзина");
 ?>
 
-<form action="" method="post" name="os-order-form" class="cert_form_js" id="os-order-form">
+<form action="" data-action="feedback.oneclick.php" method="post" name="os-order-form" class="cert_form_js" id="os-order-form">
 
     <input type="hidden" name="person_type_id" value="<?=$arParams['PERSON_TYPE_ID']?>">
     <input type="hidden" name="save" value="y">
@@ -125,28 +125,31 @@ $APPLICATION->AddChainItem("Корзина");
 
                                         <div class="card-order_item">
                                             <label>Имя</label>
-                                            <input type="text" name="name" <? if(!empty($arResult['USER']['NAME'])): ?> value="<?=$arResult['USER']['NAME'];?>" readonly<? endif; ?>>
+                                            <input type="text" data-rules="required" name="name" <? if(!empty($arResult['USER']['NAME'])): ?> value="<?=$arResult['USER']['NAME'];?>" readonly<? endif; ?>>
                                         </div>
 
                                         <div class="card-order_item">
                                             <label>Телефон</label>
-                                            <input type="text" name="phone" <? if(!empty($arResult['USER']['PHONE'])): ?> value="<?=$arResult['USER']['PHONE'];?>" readonly<? endif; ?>>
+                                            <input type="text" data-rules="required" name="phone" <? if(!empty($arResult['USER']['PHONE'])): ?> value="<?=$arResult['USER']['PHONE'];?>" readonly<? endif; ?>>
                                         </div>
 
                                     </div>
 
                                     <div class="card-order_item">
                                         <label>Электронная почта</label>
-                                        <input type="text" name="email" <? if(!empty($arResult['USER']['EMAIL'])): ?> value="<?=$arResult['USER']['EMAIL'];?>" readonly<? endif; ?>>
+                                        <input type="text" data-rules="required" name="email" <? if(!empty($arResult['USER']['EMAIL'])): ?> value="<?=$arResult['USER']['EMAIL'];?>" readonly<? endif; ?>>
                                     </div>
 
                                     <? if (!$USER->IsAuthorized()): ?>
+
+                                    <input type="hidden" name="list">
+
                                     <div class="card-order_auth">
-                                        Для вашего удобства Вы можете <span>Войти</span> или <span>Зарегистрироваться</span>
+                                        Для вашего удобства Вы можете <span class="open-login_js">Войти</span> или <span class="open-reg_js">Зарегистрироваться</span>
                                     </div>
 
                                     <div class="card-order_buttons">
-                                        <div class="section-detail_button element-shop_one-click">
+                                        <div class="go section-detail_button element-shop_one-click">
                                             Купить в 1 клик
                                         </div>
                                         <div class="element-shop_bay next-step_js">

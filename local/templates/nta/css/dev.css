@@ -41,6 +41,16 @@ a.header-top_compare span {
     display: none;
 }
 
+.popup {
+    display: inline-block;
+    margin: 50px 0;
+    max-width: 570px;
+    padding: 0;
+    padding-bottom: 40px;
+    overflow: hidden;
+    width: 90%;
+}
+
 .ajax-container_js {
     position: relative;
 }

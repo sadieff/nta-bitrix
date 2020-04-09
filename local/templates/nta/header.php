@@ -53,7 +53,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                 <div class="header-top_phone">
                                     +7 (495) 252 04-45
                                 </div>
-                                <div class="header-top_recall">
+                                <div class="header-top_recall recall_js">
                                     Заказать звонок
                                 </div>
                             </div>
@@ -119,7 +119,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             </a>
                         </div>
                         <div class="header-recall">
-                            <div class="header-recall_button">
+                            <div class="header-recall_button recall_js">
                                 Заказать звонок
                             </div>
                         </div>

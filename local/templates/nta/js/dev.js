@@ -79,6 +79,22 @@ $(document).ready(function() {
 
     });
 
+    /* покупка в один клик */
+
+    $('.card .section-detail_button').on('click', function(){
+        let list = '';
+        let item = '';
+        $('.card-item').each(function(){
+            item = 'Товар: '+$.trim($(this).find('.card-item_title').text())+', ';
+            item += $.trim($(this).find('.card-item_articul').text())+', ';
+            item += 'Стоимость: '+$.trim($(this).find('.element-shop_price').text())+', ';
+            item += 'Количество: '+$.trim($(this).find('input[name=quantity]').val())+'; <br>';
+            list += item;
+        });
+        console.log(list);
+        $('.card input[name=list]').val(list);
+    });
+
     /* добавление товара в сравнение */
 
     $.ajax({
@@ -168,6 +184,7 @@ $(document).ready(function() {
             var $form = $(this).closest('form');
             var data = $form.serialize();
             var action = $form.attr('action');
+            if(!$form.attr('action')) action = $form.data('action');
 
             var rules = Object();
 
@@ -210,18 +227,34 @@ $(document).ready(function() {
 
                     btn.addClass('go').removeClass('btn-desabled');
 
+                    // при успехе закроем все открытые окна
+                    if(data.status == "success") $.fancybox.close(true);
+
                     if(data.status == "success" && data.redirect) {
                         document.location.href = data.redirect;
                     }
-
-                    if((data.status == "success" || data.status == "error")  && data.content) {
-                        $.fancybox.open('<div class="modal">' +
+                    else if((data.status == "success" || data.status == "error")  && data.content) {
+                        /*$.fancybox.open('<div class="popup">' +
                             '<div class="modal-title">'+data.title+'</div>' +
                             '<div class="modal-button_box">'+data.content+'</div>' +
-                        '</div>');
+                        '</div>');*/
+                        let popup = '<div class="popup">' +
+                            '<div class="modal-title">'+data.title+'</div>' +
+                            '<div class="modal-button_box">'+data.content+'</div>' +
+                            '</div>';
+
+                        $.fancybox.open({
+                            src  : popup,
+                            type : 'inline',
+                            opts : {
+                                afterClose : function() {
+                                    if(data.refresh == true) location.reload();
+                                }
+                            }
+                        });
                     }
                     else {
-                        $.fancybox.open('<div class="modal">' +
+                        $.fancybox.open('<div class="popup">' +
                             '<div class="modal-title">'+data.title+'</div>' +
                             '<div class="modal-button_box">' +
                                 '<div class="modal-dsc">'+data.text+'</div>' +

@@ -78,22 +78,22 @@ $arResult = $APPLICATION->IncludeComponent("get:element.property", "",
                 <div class="contacts-feedback_title">
                     Написать нам
                 </div>
-                <form action="">
+                <form action="feedback.contacts.php">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="contacts-feedback_item">
-                                <input type="text" name="name" placeholder="ФИО">
+                                <input type="text" name="name" placeholder="ФИО" data-rules="required">
                             </div>
                             <div class="contacts-feedback_item">
                                 <input type="text" name="email" placeholder="Email">
                             </div>
                             <div class="contacts-feedback_item">
-                                <input type="text" name="phone" placeholder="Телефон">
+                                <input type="text" name="phone" placeholder="Телефон" data-rules="required">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contacts-feedback_item">
-                                <textarea name="msg" placeholder="Сообщение"></textarea>
+                                <textarea name="msg" placeholder="Сообщение" data-rules="required"></textarea>
                             </div>
                             <div class="contacts-feedback_btn_box">
                                 <label class="input-checkbox">

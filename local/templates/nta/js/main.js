@@ -14,6 +14,28 @@ $(document).ready(function(){
 		});
 	});
 
+	$('.recall_js').on('click', function(){
+		$.fancybox.open({
+			src  : $('#recall'),
+			type : 'inline',
+			attr: {
+				scrolling: "none"
+			},
+			scrolling : 'visible'
+		});
+	});
+
+	$('.section-detail .element-shop_one-click').on('click', function(){
+		$.fancybox.open({
+			src  : $('#oneclick'),
+			type : 'inline',
+			attr: {
+				scrolling: "none"
+			},
+			scrolling : 'visible'
+		});
+	});
+
 	$('.open-login_js').on('click', function(){
 		$('.login-tab_js').click();
 		$.fancybox.open({
