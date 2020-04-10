@@ -62,4 +62,7 @@ foreach ($arResult["STRORAGES_MAP"] as $storageItem) {
     );
 }
 
-//p($arResult["STRORAGES"]);
+/* get link on the parent section */
+
+$sectionRequest = CIBlockSection::GetByID($arResult["IBLOCK_SECTION_ID"]);
+if($section = $sectionRequest->GetNext()) $arResult["PARENT_LINK"] = $section['SECTION_PAGE_URL'];

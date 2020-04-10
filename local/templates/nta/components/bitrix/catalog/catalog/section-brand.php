@@ -1,5 +1,4 @@
 <?php
-//$APPLICATION->AddChainItem($arSection["UF_TITLE"]);
 if(!empty($arSection["DETAIL_PICTURE"])) $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
 $this->setFrameMode(true); ?>
 
@@ -14,7 +13,7 @@ $this->setFrameMode(true); ?>
                 <?=$arSection["~UF_BANNER_DSC"];?>
             </div>
             <div class="static-banner_button">
-                <a href="#" class="static-banner_link">
+                <a href="#list" class="static-banner_link gotoblock_js">
                     Модели и размеры
                 </a>
             </div>
@@ -95,7 +94,7 @@ $this->setFrameMode(true); ?>
 
 </div> <!-- filter-home -->
 
-<div class="category-section page-brand_section">
+<div class="category-section page-brand_section" id="list">
     <div class="container ajax-container_js">
         <? $APPLICATION->IncludeComponent("bitrix:catalog.section.list",
             "brands.listing",

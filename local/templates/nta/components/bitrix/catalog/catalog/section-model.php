@@ -3,7 +3,11 @@ $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-absolute breadcrumb
 if(!empty($arSection["PICTURE"])){
     $picture = CFile::ResizeImageGet($arSection["PICTURE"], array('width'=>371, 'height'=>467), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 }
-else $picture["src"] = "/local/templates/nta/images/default.jpg";;
+else $picture["src"] = "/local/templates/nta/images/default.jpg";
+
+/* get link on the parent section */
+$sectionRequest = CIBlockSection::GetByID($arSection["IBLOCK_SECTION_ID"]);
+if($section = $sectionRequest->GetNext()) $arSection["PARENT_LINK"] = $section['SECTION_PAGE_URL'];
 ?>
 
 <div class="section-detail">
@@ -45,15 +49,15 @@ else $picture["src"] = "/local/templates/nta/images/default.jpg";;
                 </ul>
                 <? endif; ?>
                 <div class="section-detail_buttons">
-                    <a href="#" class="section-detail_sizes">Размеры</a>
-                    <a href="#" class="section-detail_button">Подробнее о бренде Cultor</a>
+                    <a href="#list" class="section-detail_sizes gotoblock_js">Размеры</a>
+                    <a href="<?=$arSection["PARENT_LINK"];?>" class="section-detail_button">Подробнее о бренде Cultor</a>
                 </div>
             </div>
         </div>
     </div>
 </div> <!-- section-detail -->
 
-<div class="section-list section-detail_list">
+<div class="section-list section-detail_list" id="list">
     <div class="container">
         <div class="section-list_title">
             Товары данное модели

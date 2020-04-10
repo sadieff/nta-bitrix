@@ -87,7 +87,7 @@ $this->setFrameMode(true); ?>
 
                                 </div>
 
-                                <a href="#" class="section-detail_button">
+                                <a href="<?=$arResult["PARENT_LINK"];?>" class="section-detail_button">
                                     Подробнее о модели
                                 </a>
                             </div>

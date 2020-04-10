@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+    $('.gotoblock_js').on('click', function(e){
+        e.preventDefault();
+        var anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: $(anchor.attr('href')).offset().top-47
+        }, 400);
+    });
+
     /* ajax пагинация */
     $(document).on('click', '.navigation_js a', function (e) {
         console.log('here');
