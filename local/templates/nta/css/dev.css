@@ -51,6 +51,10 @@ a.header-top_compare span {
     width: 90%;
 }
 
+.modal.fancybox-content {
+    display: inline-block;
+}
+
 .ajax-container_js {
     position: relative;
 }

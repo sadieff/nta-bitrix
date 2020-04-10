@@ -125,19 +125,19 @@ $APPLICATION->AddChainItem("Корзина");
 
                                         <div class="card-order_item">
                                             <label>Имя</label>
-                                            <input type="text" data-rules="required" name="name" <? if(!empty($arResult['USER']['NAME'])): ?> value="<?=$arResult['USER']['NAME'];?>" readonly<? endif; ?>>
+                                            <input type="text" data-rules="required" name="properties[NAME]" <? if(!empty($arResult['USER']['NAME'])): ?> value="<?=$arResult['USER']['NAME'];?>" readonly<? endif; ?>>
                                         </div>
 
                                         <div class="card-order_item">
                                             <label>Телефон</label>
-                                            <input type="text" data-rules="required" name="phone" <? if(!empty($arResult['USER']['PHONE'])): ?> value="<?=$arResult['USER']['PHONE'];?>" readonly<? endif; ?>>
+                                            <input type="text" data-rules="required" name="properties[PHONE]" <? if(!empty($arResult['USER']['PHONE'])): ?> value="<?=$arResult['USER']['PHONE'];?>" readonly<? endif; ?>>
                                         </div>
 
                                     </div>
 
                                     <div class="card-order_item">
                                         <label>Электронная почта</label>
-                                        <input type="text" data-rules="required" name="email" <? if(!empty($arResult['USER']['EMAIL'])): ?> value="<?=$arResult['USER']['EMAIL'];?>" readonly<? endif; ?>>
+                                        <input type="text" data-rules="required" name="properties[EMAIL]" <? if(!empty($arResult['USER']['EMAIL'])): ?> value="<?=$arResult['USER']['EMAIL'];?>" readonly<? endif; ?>>
                                     </div>
 
                                     <? if (!$USER->IsAuthorized()): ?>

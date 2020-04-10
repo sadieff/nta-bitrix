@@ -16,12 +16,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFile */
 /** @var string $templateFolder */
 /** @var string $componentPath */
-/** @var OpenSourceOrderComponent $component */
-CJSCore::Init(['jquery']);
-$this->addExternalJs($templateFolder . '/selectize/selectize.js');
-$this->addExternalCss($templateFolder . '/selectize/selectize.default.css');
-$this->addExternalCss($templateFolder . '/selectize/selectize.dropdown.css');
-?>
+/** @var OpenSourceOrderComponent $component */ ?>
 <div class="os-order">
     <?php if (count($component->errorCollection) > 0): ?>
         <? $APPLICATION->AddChainItem("Корзина"); ?>

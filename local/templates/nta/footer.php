@@ -280,7 +280,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     ФИО
                 </div>
                 <div class="modal-input_input">
-                    <input type="text" name="name" autocomplete="off" data-rules="required">
+                    <input type="text" name="properties[NAME]" autocomplete="off" data-rules="required">
                 </div>
             </div>
             <div class="modal-input">
@@ -288,7 +288,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     Телефон
                 </div>
                 <div class="modal-input_input">
-                    <input type="text" name="phone" autocomplete="off" data-rules="required">
+                    <input type="text" name="properties[PHONE]" autocomplete="off" data-rules="required">
                 </div>
             </div>
             <div class="modal-input">
@@ -296,7 +296,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     Email
                 </div>
                 <div class="modal-input_input">
-                    <input type="text" name="email" autocomplete="off" data-rules="required">
+                    <input type="text" name="properties[EMAIL]" autocomplete="off" data-rules="required">
                 </div>
             </div>
             <div class="modal-button_box">

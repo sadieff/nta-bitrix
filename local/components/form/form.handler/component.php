@@ -1,8 +1,4 @@
-<?
-//error_reporting(E_ALL);
-//ini_set('display_errors','On');
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
+<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 $arResult['FORM_ID'] = $arParams["FORM_ID"];
 $arResult['MAIL_ID'] = $arParams["MAIL_ID"];
@@ -12,13 +8,14 @@ $filesize = true;
 
 CModule::IncludeModule("form");
 
-foreach ($arParams['FIELDS'] as $key => $item):
+foreach ($arParams['FIELDS'] as $key => $item) {
 	if(is_array($_REQUEST[$key])){
-		$FIELDS[$item] = implode(",", $_REQUEST[$key]);
-	}else {
-		$FIELDS[$item] = $_REQUEST[$key];
+	    foreach($_REQUEST[$key] as $k => $prop) {
+            $FIELDS[$item[$k]] = $prop;
+        }
 	}
-endforeach;
+	else $FIELDS[$item] = $_REQUEST[$key];
+}
 
 if($arParams["UPLOAD"]) {
 
@@ -57,4 +54,4 @@ $arResult['RESULT'] = $result;
 $arResult['FIELDS'] = $FIELDS;
 $arResult["html"] = array();
 
-$this->IncludeComponentTemplate(); ?>
+$this->IncludeComponentTemplate();
