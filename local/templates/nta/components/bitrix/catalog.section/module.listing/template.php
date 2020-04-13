@@ -11,7 +11,6 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $templateName
  * @var string $componentPath
  */
-
 $this->setFrameMode(true); ?>
 
 

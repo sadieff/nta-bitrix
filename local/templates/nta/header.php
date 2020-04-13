@@ -77,10 +77,10 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <div class="header-top_start">
                     <div class="container">
                         <div class="header-top_wrap">
-                            <div class="header-top_search">
-                                <input type="text" name="srch" placeholder="Поиск">
+                            <form action="/search/" method="get" class="header-top_search">
+                                <input type="text" name="q" placeholder="Поиск">
                                 <button></button>
-                            </div>
+                            </form>
                             <? if ($USER->IsAuthorized()): ?>
                                 <a href="/personal/" class="header-top_cabinet">
                                     <?=$USER->GetByID($USER->GetID())->GetNext()['LOGIN'];?>
