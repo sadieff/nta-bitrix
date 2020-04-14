@@ -10,4 +10,6 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+global $NavNum;
+$NavNum = 0;
 ?>

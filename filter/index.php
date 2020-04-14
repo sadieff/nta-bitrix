@@ -52,12 +52,14 @@ $APPLICATION->SetTitle("Поиск"); ?>
 
     <div class="search-list section-list -section-detail_list">
         <div class="container">
-            <div class="section-list_enum">
+            <div class="ajax-container_js">
                 <? global $arrFilter;
                 $APPLICATION->IncludeComponent(
                     "bitrix:catalog.section",
                     "module.listing",
                     array(
+                        "AJAX" => $_GET["ajaxmode"],
+                        "PAGER_TEMPLATE" => "pagenation",
                         "IBLOCK_ID" => "1",
                         "IBLOCK_TYPE" => "catalog",
                         "FILTER_NAME" => "arrFilter",

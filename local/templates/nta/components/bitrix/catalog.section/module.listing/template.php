@@ -11,19 +11,23 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $templateName
  * @var string $componentPath
  */
-$this->setFrameMode(true); ?>
+$this->setFrameMode(true);
+if($arParams["AJAX"] == "y") ob_start();?>
 
+<div class="section-list_enum">
 
-<div class="section-header">
-    <span>Фото</span>
-    <span>Наименование</span>
-    <span class="prop-1">Посадочный<br> диаметр</span>
-    <span class="prop-2">Типоразмер</span>
-    <span class="prop-3">Слойность</span>
-    <span class="prop-quantity">Наличие</span>
-    <span>Кол-во</span>
-    <span>Стоимость</span>
-</div>
+<? if($arParams["AJAX"] != "y"): ?>
+    <div class="section-header">
+        <span>Фото</span>
+        <span>Наименование</span>
+        <span class="prop-1">Посадочный<br> диаметр</span>
+        <span class="prop-2">Типоразмер</span>
+        <span class="prop-3">Слойность</span>
+        <span class="prop-quantity">Наличие</span>
+        <span>Кол-во</span>
+        <span>Стоимость</span>
+    </div>
+<? endif; ?>
 
 <? foreach ($arResult['ITEMS'] as $arItem): ?>
 
@@ -67,3 +71,9 @@ $this->setFrameMode(true); ?>
     </div>
 
 <? endforeach; ?>
+
+</div>
+
+<?=$arResult["NAV_STRING"];?>
+
+<? if($arParams["AJAX"] == "y") getAjaxContent(ob_get_contents()); ?>

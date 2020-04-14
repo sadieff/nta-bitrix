@@ -72,9 +72,9 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?" . $arResult["N
                         </li>
                     <? else: ?>
                         <? if ($arResult["NavPageCount"] == ($arResult["NavPageNomer"] + 1)): ?>
-                            <li>
+                            <!--li>
                                 <a href="<?= $arResult["sUrlPath"] ?><?= $strNavQueryStringFull ?>">-2-<?= GetMessage("nav_prev") ?></a>
-                            </li>
+                            </li-->
                         <? else: ?>
                             <li>
                                 <a href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult["NavNum"] ?>=<?= ($arResult["NavPageNomer"] + 1) ?>">-3-<?= GetMessage("nav_prev") ?></a>
@@ -82,9 +82,9 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?" . $arResult["N
                         <? endif ?>
                     <? endif ?>
                 <? else: ?>
-                    <li>
+                    <!--li>
                         <?= GetMessage("nav_begin") ?>&nbsp;|&nbsp;<?= GetMessage("nav_prev") ?>&nbsp;|
-                    </li>
+                    </li-->
                 <? endif ?>
 
                 <? while ($arResult["nStartPage"] >= $arResult["nEndPage"]): ?>
@@ -108,16 +108,16 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?" . $arResult["N
                 <? endwhile ?>
 
                 <? if ($arResult["NavPageNomer"] > 1): ?>
-                    <li class="next">
+                    <!--li class="next">
                         <a href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult["NavNum"] ?>=<?= ($arResult["NavPageNomer"] - 1) ?>"><?= GetMessage("nav_next") ?></a>
-                    </li>
-                    <li class="end">
+                    </li-->
+                    <!--li class="end">
                         <a href="<?= $arResult["sUrlPath"] ?>?<?= $strNavQueryString ?>PAGEN_<?= $arResult["NavNum"] ?>=1"><?= GetMessage("nav_end") ?></a>
-                    </li>
+                    </li-->
                 <? else: ?>
-                    <li class="end">
+                    <!--li class="end">
                         <?= GetMessage("nav_next") ?>&nbsp;|&nbsp;<?= GetMessage("nav_end") ?>
-                    </li>
+                    </li-->
                 <? endif ?>
 
             <? else: ?>

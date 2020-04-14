@@ -55,6 +55,10 @@ a.header-top_compare span {
     display: inline-block;
 }
 
+.section-list_enum + .navigation_js {
+    padding-top: 40px;
+}
+
 .ajax-container_js {
     position: relative;
 }
