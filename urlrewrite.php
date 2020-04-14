@@ -56,4 +56,20 @@ $arUrlRewrite=array (
     'PATH' => '/articles/detail.php',
     'SORT' => 100,
   ),
+   7 =>
+   array (
+    'CONDITION' => '#^/filter/(.+?)/apply/#',
+    'RULE' => 'SMART_FILTER_PATH=$1',
+    'ID' => '',
+    'PATH' => '/filter/index.php',
+    'SORT' => 99,
+   ),
+   8 =>
+   array (
+    'CONDITION' => '#^/search/filter/(.+?)/apply/#',
+    'RULE' => 'SMART_FILTER_PATH=$1',
+    'ID' => '',
+    'PATH' => '/search/filter/index.php',
+    'SORT' => 99,
+   ),
 );

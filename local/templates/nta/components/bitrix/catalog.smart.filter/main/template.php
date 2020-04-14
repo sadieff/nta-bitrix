@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 
 ?>
 
-<form id="mainfilter" class="filter-form">
+<form id="mainfilter" name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="post" class="filter-form">
 
     <? foreach ($arResult["ITEMS"] as $arItem):?>
 
@@ -30,9 +30,9 @@ $this->setFrameMode(true);
                 <? if(!empty($arItem["VALUES"])): ?>
                 <div class="filter-content">
                     <div class="filter-content_buttons">
-                        <div class="filter-content_add">
+                        <a href="#" class="filter-content_add filter-apply">
                             Подобрать
-                        </div>
+                        </a>
                         <div class="filter-content_clear">
                             Сбросить
                         </div>
@@ -75,11 +75,10 @@ $this->setFrameMode(true);
     <? endforeach; ?>
 
     <div class="filter-form_button-box">
-        <button class="filter-form_button">
+        <a href="#" class="filter-form_button filter-apply">
             Подобрать
-        </button>
+        </a>
     </div>
 
     <input type="hidden" value="y" name="ajax">
-    <input type="hidden" value="Y" name="bitrix_include_areas">
 </form>

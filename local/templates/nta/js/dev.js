@@ -156,7 +156,7 @@ $(document).ready(function() {
 
         var data = $('#mainfilter').serialize();
         $.ajax({
-            url: document.location.pathname,
+            url: '/filter/',
             data: data,
             type: 'get',
             dataType: 'json',
@@ -170,6 +170,9 @@ $(document).ready(function() {
 
     /* изменим фильтр в соответствии с ответом сервера */
     function filter_update(data) {
+
+        $('#mainfilter .filter-apply').attr('href', data.FILTER_URL);
+
         $.each(data.ITEMS, function(index, item) { // обойдем блоки
 
             $.each(item.VALUES, function(index, element) { // обойдем элементы
