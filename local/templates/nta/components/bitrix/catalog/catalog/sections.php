@@ -13,65 +13,25 @@
 /** @var CBitrixComponent $component */
 
 $APPLICATION->AddViewContent('BREADCRUMB_CLASS', 'breadcrumb-white');
-
 $this->setFrameMode(true); ?>
 
-<div class="main-slider owl-carousel">
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-1.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Эксклюзивный дилер Mitas в России
-            </div>
-            <div class="main-slider_dsc">
-                Индустриальные, сельскохозяйственные, лесные, для погрузчиков, мотошины, велошины
-            </div>
-            <div class="main-slider_logo">
-                <img src="/local/templates/nta/images/image-14.jpg" alt="">
-                <img src="/local/templates/nta/images/image-15.jpg" alt="">
-            </div>
-            <a href="#" class="main-slider_button">Начать подбор</a>
-        </div>
-    </div>
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-2.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Официальный дилер мировых лидеров
-            </div>
-            <div class="main-slider_dsc">
-                По производству высококачественных индустриальных, сельскохозяйственных и OTR шин
-            </div>
-            <div class="main-slider_logo">
-                <img src="/local/templates/nta/images/image-14.jpg" alt="">
-                <img src="/local/templates/nta/images/image-15.jpg" alt="">
-            </div>
-            <a href="#" class="main-slider_button">Начать подбор</a>
-        </div>
-    </div>
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-1.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Официальный дилер мировых лидеров
-            </div>
-            <div class="main-slider_dsc">
-                По производству высококачественных индустриальных, сельскохозяйственных и OTR шин
-            </div>
-        </div>
-    </div>
-    <div class="main-sliders_item">
-        <img src="/local/templates/nta/images/image-2.jpg" alt="">
-        <div class="container">
-            <div class="main-slider_title">
-                Официальный дилер мировых лидеров
-            </div>
-            <div class="main-slider_dsc">
-                По производству высококачественных индустриальных, сельскохозяйственных и OTR шин
-            </div>
-        </div>
-    </div>
-</div> <!-- main-slider -->
+<? $APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "slider.home",
+    array(
+        "IBLOCK_TYPE" => "sliders",
+        "IBLOCK_ID"   => "16",
+        "NEWS_COUNT"  => "5",
+        "SINGLE_IMAGE" => "N",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "SET_TITLE" => "N",
+        "PROPERTY_CODE" => array(
+            0 => "NAME",
+        ),
+    ),
+    false
+); ?>
 
 <div class="category-list category-list_small">
     <div class="container">
