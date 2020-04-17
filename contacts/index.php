@@ -3,19 +3,15 @@
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
 $APPLICATION->SetTitle("Контакты");
 
-$arResult = $APPLICATION->IncludeComponent("get:element.property", "",
-    Array(
-        "IBLOCK_ID" => "12",
-        "ELEMENT" => "3444",
-        "OUTPUT" => "RETURN",
-    ),
-    false
-); ?>
+/* реквезиты */
+$arResult = $APPLICATION->IncludeComponent("get:element.property", "", Array( "IBLOCK_ID" => "12", "ELEMENT" => "3444","OUTPUT" => "RETURN" ), false );
+$arContacts = $APPLICATION->IncludeComponent("get:element.property", "", Array( "IBLOCK_ID" => "17", "ELEMENT" => "3470","OUTPUT" => "RETURN" ), false );
+?>
 
     <div class="contacts-page">
         <div class="container">
             <div class="catalog-new_title">
-                Контакты
+                <?=$arContacts["NAME"];?>
             </div>
             <div class="contacts-page_enum">
 
@@ -47,27 +43,24 @@ $arResult = $APPLICATION->IncludeComponent("get:element.property", "",
     <div class="appeal">
         <div class="container">
             <div class="appeal-title">
-                Уважаемые коллеги и партнеры!
+                <?=$arContacts["PROPERTIES"]["TITLE"]["VALUE"];?>
             </div>
             <div class="appeal-content content_">
-                <p>Кроме этого, демократы в конгрессе предъявили президенту США обвинения в воспрепятствовании работе Палаты представителей: глава Белого дома запретил высокопоставленным сотрудникам администрации отвечать на вызовы законодателей и выступать на слушаниях в комитетах в рамках процедуры импичмента.</p>
+                <?=$arContacts["~PREVIEW_TEXT"];?>
             </div>
             <div class="appeal-content_images">
-                <div class="appeal-content_item">
-                    <a href="/local/templates/nta/images/image-27.jpg" data-fancybox="/local/templates/nta/images" class="appeal-content_photo">
-                        <img src="/local/templates/nta/images/image-27.jpg" alt="">
-                    </a>
-                </div>
-                <div class="appeal-content_item">
-                    <a href="/local/templates/nta/images/image-28.jpg" data-fancybox="/local/templates/nta/images" class="appeal-content_photo center">
-                        <img src="/local/templates/nta/images/image-28.jpg" alt="">
-                    </a>
-                </div>
-                <div class="appeal-content_item">
-                    <a href="/local/templates/nta/images/image-29.jpg" data-fancybox="/local/templates/nta/images" class="appeal-content_photo">
-                        <img src="/local/templates/nta/images/image-29.jpg" alt="">
-                    </a>
-                </div>
+                <? foreach ($arContacts["PROPERTIES"]["IMAGES"]["VALUE"] as $arGallery):
+                    $imageSmall = CFile::ResizeImageGet($arGallery, array('width' => 155, 'height' => 132), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    $imageBig   = CFile::ResizeImageGet($arGallery, array('width' => 1300, 'height' => 1300), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+                    ?>
+
+                    <div class="appeal-content_item">
+                        <a href="<?=$imageBig["src"];?>" data-fancybox="images" class="appeal-content_photo">
+                            <img src="<?=$imageSmall["src"];?>" alt="">
+                        </a>
+                    </div>
+
+                <? endforeach; ?>
             </div>
         </div>
     </div> <!-- appeal -->

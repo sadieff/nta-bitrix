@@ -45,8 +45,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <div class="header-top_hidden">
                     <div class="container">
                         <div class="header-top_wrap">
-                            <a href="#" class="header-top_logo"></a>
-                            <a href="#" class="header-top_select">
+                            <a href="/" class="header-top_logo"></a>
+                            <a href="/filter/" class="header-top_select">
                                 Подбор шин
                             </a>
                             <div class="header-top_call">

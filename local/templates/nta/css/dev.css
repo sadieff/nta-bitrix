@@ -55,6 +55,17 @@ a.header-top_compare span {
     display: inline-block;
 }
 
+.cabinet-info_edit {
+    cursor: pointer;
+}
+
+.cabinet-userdata_input input {
+    border-bottom: 1px solid #f1f1f1;
+}
+.cabinet-userdata_input input[readonly=readonly] {
+    border: none;
+}
+
 .section-list_enum + .navigation_js {
     padding-top: 40px;
 }

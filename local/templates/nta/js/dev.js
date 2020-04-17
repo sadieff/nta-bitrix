@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+    $(document).on('click', '.cabinet-info_edit:not(.active)', function(){
+        $('.cabinet-info_box input').each(function(){
+            //$(this).prop('readonly', false);
+            $(this).removeAttr('readonly');
+        });
+        $(this).addClass('active').text('Сохранить');
+    });
+
+    $(document).on('click', '.cabinet-info_edit.active', function(){
+        $(this).removeClass('active').text('Редактировать');
+        $('.cabinet-info_box input').each(function(){
+            //$(this).prop('readonly', true);
+            $(this).attr('readonly', 'readonly');
+        });
+    });
+
     $('.gotoblock_js').on('click', function(e){
         e.preventDefault();
         var anchor = $(this);

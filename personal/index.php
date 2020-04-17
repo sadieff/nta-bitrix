@@ -1,5 +1,12 @@
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Доставка и оплата"); ?>
+$APPLICATION->SetTitle("Доставка и оплата");
+global $USER;
+$manager = $USER->GetByID($USER->GetID())->GetNext()['UF_MANAGER'];
+$sale = $USER->GetByID($USER->GetID())->GetNext()['UF_SALE'];
+if(!empty($manager)) {
+    $arManager = $APPLICATION->IncludeComponent("get:element.property", "", Array( "IBLOCK_ID" => "18", "ELEMENT" => $manager,"OUTPUT" => "RETURN" ), false );
+}
+?>
 
     <div class="order">
         <div class="container">
@@ -20,31 +27,31 @@ $APPLICATION->SetTitle("Доставка и оплата"); ?>
                                 <div class="cabinet-userdata_item">
                                     <label>Компания:</label>
                                     <div class="cabinet-userdata_input">
-                                        <input type="text" value="ООО “Колеса Мира”" readonly="readonly">
+                                        <input type="text" value="<?=$USER->GetByID($USER->GetID())->GetNext()['WORK_COMPANY'];?>" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="cabinet-userdata_item">
                                     <label>ИНН:</label>
                                     <div class="cabinet-userdata_input">
-                                        <input type="text" value="42154742124" readonly="readonly">
+                                        <input type="text" value="<?=$USER->GetByID($USER->GetID())->GetNext()['WORK_DEPARTMENT'];?>" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="cabinet-userdata_item mb blue">
                                     <label>Почта:</label>
                                     <div class="cabinet-userdata_input">
-                                        <input type="text" value="kolesa@yandex.ru" readonly="readonly">
+                                        <input type="text" value="<?=$USER->GetByID($USER->GetID())->GetNext()['EMAIL'];?>" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="cabinet-userdata_item">
                                     <label>Контактное лицо:</label>
                                     <div class="cabinet-userdata_input">
-                                        <input type="text" value="Зерно Константин Николаевич" readonly="readonly">
+                                        <input type="text" value="<?=$USER->GetByID($USER->GetID())->GetNext()['TITLE'];?>" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="cabinet-userdata_item">
                                     <label>Телефон:</label>
                                     <div class="cabinet-userdata_input">
-                                        <input type="text" value="+7 495 112 4471" readonly="readonly">
+                                        <input type="text" value="<?=$USER->GetByID($USER->GetID())->GetNext()['PERSONAL_PHONE'];?>" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="cabinet-userdata_item blue">
@@ -54,9 +61,10 @@ $APPLICATION->SetTitle("Доставка и оплата"); ?>
                                     </div>
                                 </div>
 
+                                <? if(!empty($sale) && $sale > 0): ?>
                                 <div class="cabinet-sale">
                                     <div class="cabinet-sale_percent">
-                                        7%
+                                        <?=$sale;?>%
                                     </div>
                                     <div class="cabinet-sale_box">
                                         <div class="cabinet-sale_title">
@@ -70,34 +78,37 @@ $APPLICATION->SetTitle("Доставка и оплата"); ?>
                                     <a href="#" class="cabinet-sale_more">
                                         Хочу больше !
                                     </a>
-
                                 </div>
+                                <? endif; ?>
 
                             </form>
                         </div>
                     </div>
 
+                    <? if(!empty($manager)): ?>
                     <div class="order-info_box">
                         <div class="order-info_ttl">
                             Ваш персональный менеджер
                         </div>
                         <div class="order-manager">
                             <div class="order-manager_image">
-                                <img src="/local/templates/nta/images/manager.png" alt="">
+                                <img src="<?=CFile::GetPath($arManager["PREVIEW_PICTURE"]);?>" alt="">
                             </div>
                             <div class="order-manager_info">
                                 <div class="order-manager_title">
-                                    Зерно Валерия Николаевна
+                                    <?=$arManager["NAME"];?>
                                 </div>
                                 <div class="order-manager_phone">
-                                    +7 (495) 332 74 11
+                                    <?=$arManager["PROPERTIES"]["PHONE"]["VALUE"];?>
                                 </div>
                                 <div class="order-manager_email">
-                                    zernokostya@yandex.ru
+                                    <?=$arManager["PROPERTIES"]["EMAIL"]["VALUE"];?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <? endif; ?>
+
                 </div>
 
                 <div class="cabinet-info_enum">

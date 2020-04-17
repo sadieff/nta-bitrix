@@ -170,19 +170,21 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/map.js');
                     <div class="row">
                         <div class="col-lg-6 col-md-7">
                             <div class="about-content_text">
-                                <h3>Короткий интересный подзаголовок<br> о компании</h3>
-                                <p>Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём.</p>
-                                <div class="about-button_box">
-                                    <a href="#" class="about-button">
-                                        Подробнее
-                                    </a>
-                                </div>
+                                <? $APPLICATION->IncludeFile(
+                                    "/local/include/about.content.php",
+                                    Array(),
+                                    Array("MODE"=>"php") // text, html, php
+                                ); ?>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-5">
                             <div class="about-content_image_wrap">
                                 <div class="about-content_image">
-                                    <img src="/local/templates/nta/images/image-10.jpg" alt="">
+                                    <? $APPLICATION->IncludeFile(
+                                        "/local/include/about.image.php",
+                                        Array(),
+                                        Array("MODE"=>"php") // text, html, php
+                                    ); ?>
                                 </div>
                             </div>
                         </div>

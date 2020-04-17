@@ -1,0 +1,1 @@
+<img src="/local/templates/nta/images/image-21.jpg" alt="">

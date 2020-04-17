@@ -4,7 +4,6 @@ unset($arResult["ITEMS"]["BASE"]);
 
 $arResult["UNITS"] = array(
     "TIPORAZMER_1_INT",
-    "DIAMETR_POSADOCHNYY_DYUYM",
 );
 
 if (isset($arParams["TEMPLATE_THEME"]) && !empty($arParams["TEMPLATE_THEME"]))

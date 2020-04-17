@@ -36,37 +36,45 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                         <a href="#" class="tw"></a>
                     </div>
                     <div class="footer-links">
-                        <a href="#">Соглашение об обработке персональных данных</a><br>
-                        <a href="#">Политика конфиденциальности</a>
+                        <a href="/about/personal-data/">Соглашение об обработке персональных данных</a><br>
+                        <a href="/about/privacy-policy/">Политика конфиденциальности</a>
                     </div>
                 </div>
 
                 <div class="col-xl-5 col-lg-5 col-md-6">
                     <div class="footer-contacts">
                         <div class="footer-phone_wrap">
-                            <a href="tel:+7(495)2520445" class="footer-phone">
-                                + 7 (495) 252 04 45
-                            </a>
+                            <? $APPLICATION->IncludeFile(
+                                "/local/include/footer.phone.php",
+                                Array(),
+                                Array("MODE"=>"php") // text, html, php
+                            ); ?>
                         </div>
                         <div class="footer-recall recall_js">
                             Заказать звонок
                         </div>
                         <div class="footer-time">
-                            пн-чтв. с 9:00 до 18:00<br>
-                            пт. с 9:00 до 17:00
+                            <? $APPLICATION->IncludeFile(
+                                "/local/include/footer.time.php",
+                                Array(),
+                                Array("MODE"=>"php") // text, html, php
+                            ); ?>
                         </div>
-                        <a href="mailto:info@nta-tyre.ru" class="footer-email">
-                            info@nta-tyre.ru
-                        </a>
+                        <? $APPLICATION->IncludeFile(
+                            "/local/include/footer.email.php",
+                            Array(),
+                            Array("MODE"=>"php") // text, html, php
+                        ); ?>
                         <div class="footer-social mobile">
-                            <a href="#" class="ig"></a>
-                            <a href="#" class="fb"></a>
-                            <a href="#" class="in"></a>
-                            <a href="#" class="tw"></a>
+                            <? $APPLICATION->IncludeFile(
+                                "/local/include/footer.social.php",
+                                Array(),
+                                Array("MODE"=>"php") // text, html, php
+                            ); ?>
                         </div>
                         <div class="footer-links mobile">
-                            <a href="#">Соглашение об обработке персональных данных</a><br>
-                            <a href="#">Политика конфиденциальности</a>
+                            <a href="/about/personal-data/">Соглашение об обработке персональных данных</a><br>
+                            <a href="/about/privacy-policy/">Политика конфиденциальности</a>
                         </div>
                         <div class="footer-copy">
                             © 1999 - 2020 ООО Национальный<br> шинный альянс

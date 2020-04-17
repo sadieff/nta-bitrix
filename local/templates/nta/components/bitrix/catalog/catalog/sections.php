@@ -228,16 +228,19 @@ $this->setFrameMode(true); ?>
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="catalog-info_title">
-                    Короткий интересный подзаголовок о компании
-                </div>
-                <div class="catalog-info_dsc">
-                    Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём.
-                </div>
+                <? $APPLICATION->IncludeFile(
+                    "/local/include/catalog.content.php",
+                    Array(),
+                    Array("MODE"=>"php", "NAME" => "описание: текст") // text, html, php
+                ); ?>
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="catalog-info_image">
-                    <img src="/local/templates/nta/images/image-21.jpg" alt="">
+                    <? $APPLICATION->IncludeFile(
+                        "/local/include/catalog.image.php",
+                        Array(),
+                        Array("MODE"=>"php", "NAME" => "описание: изображение") // text, html, php
+                    ); ?>
                 </div>
             </div>
         </div>
