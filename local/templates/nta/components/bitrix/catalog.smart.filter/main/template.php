@@ -12,7 +12,6 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-
 <form id="mainfilter" name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="post" class="filter-form">
 
     <? foreach ($arResult["ITEMS"] as $arItem):?>
@@ -41,11 +40,13 @@ $this->setFrameMode(true);
                         <span>Показать в</span>
                         <div class="filter-content_system-wrap">
                             <label class="input-radio">
-                                <input type="radio" value="in" class="sys-type" name="prim-system-<?=$arItem["ID"]?>">
+                                <input checked="checked" type="radio" value="type-in" class="sys-type" name="tab">
+                                <!--input type="radio" value="in" class="sys-type" name="prim-system-<?=$arItem["ID"]?>"-->
                                 <span>дюймах</span>
                             </label>
                             <label class="input-radio">
-                                <input checked="checked" type="radio" value="mm" class="sys-type" name="prim-system-<?=$arItem["ID"]?>">
+                                <input type="radio" value="type-mm" class="sys-type" name="tab">
+                                <!--input checked="checked" type="radio" value="mm" class="sys-type" name="prim-system-<?=$arItem["ID"]?>"-->
                                 <span>миллиметрах</span>
                             </label>
                         </div>
@@ -54,12 +55,12 @@ $this->setFrameMode(true);
                     <div class="filter-content_list">
                         <? foreach ($arItem["VALUES"] as $arValue): ?>
 
-                            <label class="input-checkbox">
-                                <input type="checkbox" name="<?=$arValue["CONTROL_NAME"];?>" value="Y" id="<?=$arValue["CONTROL_ID"];?>">
+                            <label class="input-checkbox <?=$arValue["CLASS"];?>">
                                 <? if(in_array($arItem["CODE"], $arResult["UNITS"])): ?>
-                                <span class="in"><?=$arValue["VALUE"];?></span>
-                                <span class="mm"><?= round($arValue["VALUE"] * 25.4);?></span>
+                                <input type="checkbox" name="<?=$arValue["CONTROL_NAME"];?>" value="Y" id="<?=$arValue["CONTROL_ID"];?>">
+                                <span><?=$arValue["VALUE"];?></span>
                                 <? else: ?>
+                                <input type="checkbox" name="<?=$arValue["CONTROL_NAME"];?>" value="Y" id="<?=$arValue["CONTROL_ID"];?>">
                                 <span><?=$arValue["VALUE"];?></span>
                                 <? endif; ?>
                             </label>

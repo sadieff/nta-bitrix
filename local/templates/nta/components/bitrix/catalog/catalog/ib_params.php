@@ -111,13 +111,13 @@ elseif ($cache->startDataCache())
             <?=$arElement["PROPERTIES"]["H1"]["~VALUE"];?>
         </div>
 
-        <div class="section-list_enum">
+        <div class="ajax-container_js">
             <? $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section",
                 "module.listing",
                 array(
                     "FILTER_NAME" => "paramsFilter",
-
+                    "AJAX" => $_GET["ajaxmode"],
                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                     "ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],

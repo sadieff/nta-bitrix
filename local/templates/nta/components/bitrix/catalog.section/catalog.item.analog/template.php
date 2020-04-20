@@ -7,18 +7,18 @@ use \Bitrix\Main\Localization\Loc;
  * @var array $arResult
  * @var CatalogSectionComponent $component
  * @var CBitrixComponentTemplate $this
+ * @var string $templateName
+ * @var string $componentPath
  */
 $this->setFrameMode(true); ?>
 
 <? if(count($arResult['ITEMS']) > 0): ?>
-<div class="product-views">
+<div class="product-analog">
     <div class="container">
         <div class="container">
-
             <div class="catalog-new_title">
-                Просмотренные товары
+                Аналоги
             </div>
-
             <div class="catalog-new_carousel catalog-new_js owl-carousel">
             <? foreach ($arResult['ITEMS'] as $arItem): ?>
 
@@ -49,10 +49,9 @@ $this->setFrameMode(true); ?>
                 </div>
 
             <? endforeach; ?>
-
             </div>
         </div>
     </div>
-</div> <!-- product-views -->
+</div> <!-- product-analog -->
 
 <? endif; ?>

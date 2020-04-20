@@ -175,9 +175,25 @@ $(document).ready(function(){
 		parent.find('.filter-select,.filter-overlay').toggleClass('active');
 	});
 
-	$(document).on('click', '.filter-content_system input', function(){ // переключение дюймы \ мм
+	/*$(document).on('click', '.filter-content_system input', function(){ // переключение дюймы \ мм
 		var value = $(this).val();
 		$(this).closest('.filter-item').removeClass('in mm').addClass(value);
+	});*/
+
+	$(document).on('click', '.filter-content_system .input-radio', function(){ // переключение дюймы \ мм
+		var value = $(this).find('input[name="tab"]').val();
+
+		$(this).closest('.filter-item').find('.filter-content_list input[type=checkbox]').each(function(){
+			$(this).prop('checked', false);
+			console.log('1');
+		});
+		$(this).closest('.filter-item').find('.filter-content_list label').each(function(){
+			$(this).css('display','none');
+		});
+		$(this).closest('.filter-item').find('.filter-content_list label.'+value).each(function(){
+			$(this).css('display','block');
+		});
+		filter_cange();
 	});
 
 	$(document).on('click', '.input-checkbox', function(){
@@ -214,6 +230,54 @@ $(document).ready(function(){
 				$(this).find('.filter-item_title i').remove();
 				$(this).find('.filter-select').html('<span>Все</span>');
 			}
+
+		});
+	}
+
+	/* фильтр */
+
+	$('.filter-content_list input').each(function(){
+		$(this).change(function(){
+			filter_cange();
+		});
+	});
+
+	$('.filter-form_button-box,.filter-content_add').on('click', function(){ // Перейдем по ссылке из фильтра
+		document.location.href = document.location.pathname + $('#mainfilter').data('success');
+	});
+
+	/* отправляем запросы при изменении фильтра */
+	function filter_cange(){
+
+		var data = $('#mainfilter').serialize();
+		$.ajax({
+			url: '/filter/',
+			data: data,
+			type: 'get',
+			dataType: 'json',
+			success: function(data){
+				$('#mainfilter').data('success', data.FILTER_URL);
+				filter_update(data);
+			}
+		});
+
+	}
+
+	/* изменим фильтр в соответствии с ответом сервера */
+	function filter_update(data) {
+
+		$('#mainfilter .filter-apply').attr('href', data.FILTER_URL);
+
+		$.each(data.ITEMS, function(index, item) { // обойдем блоки
+
+			$.each(item.VALUES, function(index, element) { // обойдем элементы
+				if(element.DISABLED === true) {
+					$('#'+element.CONTROL_ID).prop("disabled", true);
+				}
+				else {
+					$('#'+element.CONTROL_ID).prop("disabled", false);
+				}
+			});
 
 		});
 	}

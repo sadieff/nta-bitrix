@@ -6,6 +6,23 @@ $arResult["UNITS"] = array(
     "TIPORAZMER_1_INT",
 );
 
+/**
+ * Задача: засунуть свойство 27 (типоразмер 2 (миллиметры)) в свойство
+ * номер 33, (типоразмер 1 (дюймы))
+ * Дополнительно добавим им разные классы
+ */
+// Типоразмеру 1 поставить класс type-in
+foreach ($arResult["ITEMS"][33]["VALUES"] as $key => $arItem) {
+    $arResult["ITEMS"][33]["VALUES"][$key]["CLASS"] = "type-in";
+}
+
+// Типоразмеру 2 поместить внутрь Типоразмер 1 поставить класс type-mm
+foreach ($arResult["ITEMS"][27]["VALUES"] as $key => $arItem) {
+    $arItem["CLASS"] = "type-mm";
+    $arResult["ITEMS"][33]["VALUES"][$arItem["VALUE"]] = $arItem;
+}
+unset($arResult["ITEMS"][27]);
+
 if (isset($arParams["TEMPLATE_THEME"]) && !empty($arParams["TEMPLATE_THEME"]))
 {
 	$arAvailableThemes = array();

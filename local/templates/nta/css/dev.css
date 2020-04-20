@@ -70,6 +70,10 @@ a.header-top_compare span {
     padding-top: 40px;
 }
 
+.filter-item .type-mm {
+    display: none;
+}
+
 .ajax-container_js {
     position: relative;
 }
